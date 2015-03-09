@@ -1,4 +1,17 @@
 Rails.application.routes.draw do
+  resources :registrations
+
+  resources :purchases
+
+  resources :product_listings
+
+  resources :payments
+
+  resources :homepages
+
+  resources :administrations
+
+  get '/thank-you' => 'thank_you#show'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
