@@ -1,17 +1,19 @@
 Rails.application.routes.draw do
-  resources :registrations
+  
+  root 'homepages#index'
 
-  resources :purchases
+  get '/registrations' => 'registrations#index'
 
-  resources :product_listings
+  get '/purchases' => 'purchases#index'
 
-  resources :payments
+  get '/product-listings' => 'product_listings#index'
 
-  resources :homepages
+  get '/payments' => 'payments#index'
 
-  resources :administrations
+  get '/administrations' => 'administrations#index'
 
-  get '/thank-you' => 'thank_you#show'
+  get '/thank-you' => 'thank_you#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
