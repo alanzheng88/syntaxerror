@@ -1,0 +1,65 @@
+<body>
+
+<div class="header">
+
+	<div class="user-info">
+		<form action="/" method="post">
+			<%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+
+			<% if @isAuthenticated %>
+				<ul>
+					<li><%= @user.name %></li>
+					<li><%= @user.role %></li>
+				</ul>
+			<% else %>
+				<table>
+					<tr>
+						<td><input type="input" name="username" placeholder="username"></td>
+					</tr>
+					<tr>
+						<td><input type="password" name="password" placeholder="password"></td>
+					</tr>
+					<tr>
+						<td><input type="input" name="role" placeholder="this is here to test roles"></td>
+					</tr>
+					<tr>
+						<td><input type="submit" value="Sign In"></td>
+					</tr>
+				</table>
+			<% end %>
+		</form>
+	</div>
+
+	<% if @isAuthenticated %>
+		<div class="navigation-bar">
+			<ul>
+				<% if @user.role == "Site Administrator" || @user.role == "Vendor Administrator" %>
+					<li><%= link_to "Administration", administration_path %></li>
+				<% end %>
+				<% if @user.role != "Customer" %>
+					<li>Product Management</li>
+				<% end %>
+				<% if @user.role != "Customer" %> 
+					<li><%= link_to "Products", product_listings_path %></li>
+				<% end %>
+				<li>Purchase History</li>
+			</ul>
+		</div>
+	<% end %>
+
+</div>
+
+<h1>Welcome to ShopCommCanada!</h1>
+
+<div class="product-listings">
+	<h3>Products of the Day</h3>
+
+	<img src="http://www.imore.com/sites/imore.com/files/styles/large/public/topic_images/2014/topic_ipad_air_ipad_mini_0.png?itok=053pCsJ2height="300" width="300" alt="" />
+
+	<img src="http://store.storeimages.cdn-apple.com/4428/as-images.apple.com/is/image/AppleInc/aos/published/images/i/ph/iphone5c/selection/iphone5c-selection-hero-2013?wid=300&hei=300&fmt=png-alpha&qlt=95&.v=1410266073112height="300" width="300" alt="" />
+
+	<img src="http://www.imore.com/sites/imore.com/files/styles/large/public/topic_images/2014/topic_ipad_air_ipad_mini_0.png?itok=053pCsJ2height="300"" width="300" alt="" />
+
+</div>
+
+</body>

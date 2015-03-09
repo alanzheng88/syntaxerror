@@ -1,0 +1,25 @@
+// Place all the styles related to the homepage controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.navigation-bar {
+	ul {
+		li {
+			display: inline;
+			padding-right: 20px;
+			font-weight: bold
+		}
+	}
+}
+
+.user-info {
+	ul {
+		li {
+			display: block;
+		}
+	}
+}
+
+.user-info {
+	float: right;
+}

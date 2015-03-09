@@ -1,23 +1,48 @@
 <body>
 
-<h1>Administration</h1>
+<div class="title">
+  <h1>Administration</h1>
+  <%= link_to 'Back to Homepage', root_path %>
+</div>
 
-<a href="https://google.com">
-	<img src="http://www.trademarkia.com/logo-images/kantar-retail-america/shopcomm-77694521.jpg" border="0" width="200" height="60" alt="Shop at ShopComm">
-</a>
+<div class="container">
+  <div id="role-assignment">
+    <form>
+      <h4><label for="username">Assign role to user</label></h4>
+    	<input type="text" id="username" name="Username" placeholder="Username">
+    	<select>
+    		<option value="vendor_admin">Vendor Admin</option>
+    		<option value="vendor_manager">Vendor Manager</option>
+    	</select>	
+    	<input type="submit" value="Assign Role">
+    </form>
+  </div>
 
-<form>
-	<label for="username">Username:</label> 
-	<input type="text" id="username" name="Username">
-	<select>
-		<option value="vendor_admin">Vendor Admin</option>
-		<option value="vendor_manager">Vendor Manager</option>
-	</select>	
-	<input type="submit" value="Add">
-</form>
-	
+  <div id="user-role-assigned-table">
+    <table border="2">
+      <thead>
+        <tr>
+          <td>ID</td>
+          <td>Name</td>
+          <td>Role</td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>123456</td>
+          <td>Alan Zheng</td>
+          <td>Vendor Manager</td>
+          <td>Delete</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
 
 </body>
+
 <% if false %>
 <table>
   <thead>
