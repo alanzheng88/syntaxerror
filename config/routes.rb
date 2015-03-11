@@ -10,13 +10,14 @@ Rails.application.routes.draw do
 
   get '/registration' => 'registration#index'
 
+  get '/payment' => 'payment#index'
   
+
 
   get '/purchases' => 'purchases#index'
 
   get '/product-listings' => 'product_listings#index', as: 'product_listings'
 
-  get '/payments' => 'payments#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

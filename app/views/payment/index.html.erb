@@ -1,0 +1,63 @@
+<body>
+
+<h1>Payment</h1>
+
+<table>	
+	<thead>
+		<tr>
+			<th>Description</th>
+			<th>Item Price</th>
+			<th>Amount</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Iphone 9</td>
+			<td>$600.00</td>
+			<td>2</td>
+		</tr>
+		<tr>
+			<td>Total</td>
+			<td></td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+
+<fieldset>
+	<legend>Billing and Shipping Information</legend>
+
+	<form>
+		<div class="credit-cards-types">
+			<input type="radio" name="credit-card-type" id="visa" value="Visa" checked="checked">
+			<label for="visa">Visa</label>
+			<input type="radio" name="credit-card-type" id="mastercard" value="MasterCard">
+			<label for="mastercard">MasterCard</label>
+			<input type="radio" name="credit-card-type" id="americanexpress" value="American Express">
+			<label for="americanexpress">American Express</label>
+		</div>
+		
+		<div class="name">
+			<input type="text" id="firstname" name="firstname" placeholder="First Name">
+			<input type="text" id="lastname" name="lastname" placeholder="Last Name">
+		</div>
+
+		<div class="credit-card-info">
+			<input type="text" id="credit-card" name="credit-card" placeholder="Credit Card Number">
+			<input type="text" id="expiration-month" name="expiration-month" placeholder="Expiration Month">
+			<input type="text" id="expiration-year" name="expiration-year" placeholder="Expiration Year">
+		</div>
+
+		<div class="shipping-info">
+			<input type="text" name="address" placeholder="Address">
+			<input type="text" id="city" name="city" placeholder="City">
+			<input type="text" id="country" name="country" placeholder="Country">
+			<input type="text" id="postalcode" name="postalcode" placeholder="Postalcode">
+		</div>
+
+		<input type="submit" value="Submit">
+	</form>
+
+</fieldset>
+
+</body>

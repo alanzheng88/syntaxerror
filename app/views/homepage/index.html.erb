@@ -6,10 +6,10 @@
 		<form action="/" method="post">
 			<%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
 
-			<% if @isAuthenticated %>
+			<% if cookies[:isAuthenticated] %>
 				<ul>
-					<li><%= @user.name %></li>
-					<li><%= @user.role %></li>
+					<li><%= cookies[:username] %></li>
+					<li><%= cookies[:role] %></li>
 				</ul>
 			<% else %>
 				<table>
@@ -29,23 +29,6 @@
 			<% end %>
 		</form>
 	</div>
-
-	<% if @isAuthenticated %>
-		<div class="navigation-bar">
-			<ul>
-				<% if @user.role == "Site Administrator" || @user.role == "Vendor Administrator" %>
-					<li><%= link_to "Administration", administration_path %></li>
-				<% end %>
-				<% if @user.role != "Customer" %>
-					<li>Product Management</li>
-				<% end %>
-				<% if @user.role != "Customer" %> 
-					<li><%= link_to "Products", product_listings_path %></li>
-				<% end %>
-				<li>Purchase History</li>
-			</ul>
-		</div>
-	<% end %>
 
 </div>
 

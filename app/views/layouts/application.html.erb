@@ -8,6 +8,22 @@
 </head>
 <body>
 
+<%= link_to "Back to Homepage", root_path %>
+<% if cookies[:isAuthenticated] %>
+	<div class="navigation-bar">
+		<ul>
+			<% if cookies[:role].to_s == "Site Administrator" || cookies[:role].to_s == "Vendor Administrator" %>
+				<li><%= link_to "Administration", administration_path %></li>
+			<% end %>
+			<% if cookies[:role].to_s != "Customer" %>
+				<li>Product Management</li>
+			<% end %>
+			<li><%= link_to "Products", product_listings_path %></li>
+			<li>Purchase History</li>
+		</ul>
+	</div>
+<% end %>
+
 <%= yield %>
 
 </body>
