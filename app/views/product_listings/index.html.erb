@@ -1,0 +1,28 @@
+<body>
+
+<h1>Products</h1>
+
+<form>
+	<table>
+	 	<thead>
+	   		<tr>
+	   			<th></th>
+	   			<th>Image</th>
+	      		<th>Product Name</th>
+	      		<th>Seller</th>
+	    	</tr>
+	  	</thead>
+	  	<tbody>
+	  		<tr>
+	  			<td><%= check_box_tag(:camera) %></td>
+	  			<td>Some Image</td>
+	  			<td><%= label_tag(:camera, "DSLR Camera") %></td>
+	  			<td>Alan Z</td>
+	  		</tr>
+	  	</tbody>
+	</table>
+
+	<input type="submit" value="Order">
+</form>
+
+</body>

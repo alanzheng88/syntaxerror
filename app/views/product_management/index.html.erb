@@ -1,0 +1,33 @@
+<body>
+
+<h1>Product Management</h1>
+
+<form>
+	<div>
+		<%= label_tag(:item_name, "Item Name") %>
+		<%= text_field_tag(:item_name) %>
+	</div>
+	<div>
+	<div>
+		<%= label_tag(:item_description, "Item Description") %>
+		<%= text_area_tag(:item_description) %>
+	</div>
+	<%= submit_tag "Add to Products" %>
+</form>
+
+<table>
+	<thead>
+		<th>ID</th>
+		<th>Product</th>
+		<th>Quantity</th>
+		<th></th>
+	</thead>
+	<tbody>
+		<td>123</td>
+		<td>IPhone 9</td>
+		<td><%= text_field(:post, :quantity, size: 3, value: 1) %></td>
+		<td>Delete</td>
+	</tbody>
+</table>
+
+</body>

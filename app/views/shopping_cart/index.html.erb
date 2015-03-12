@@ -1,0 +1,35 @@
+<body>
+
+<h1>Shopping Cart</h1>
+
+<form>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Product</th>
+				<th>Quantity</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Hard Drive</td>
+				<td>
+					<select>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>			
+					</select>
+				</td>
+				<td>delete</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<%= link_to "Back", product_listings_path %>
+	<input type="submit" value="Proceed to Payment">
+
+</form>
+
+</body>
