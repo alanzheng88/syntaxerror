@@ -16,10 +16,10 @@
 				<li><%= link_to "Administration", administration_path %></li>
 			<% end %>
 			<% if cookies[:role] != "Customer" %>
-				<li>Product Management</li>
+				<li><%= link_to "Product Management", product_management_path %></li>
 			<% end %>
 			<li><%= link_to "Products", product_listings_path %></li>
-			<li>Purchase History</li>
+			<li><%= link_to "Purchase History", purchase_history_path %></li>
 		</ul>
 	</div>
 <% end %>
