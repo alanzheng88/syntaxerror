@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   root 'homepage#index'
 
-  post '/' => 'homepage#index'
+  post '/authenticate' => 'homepage#authenticate' 
 
   get '/administration' => 'administrations#index', as: 'administration'
 

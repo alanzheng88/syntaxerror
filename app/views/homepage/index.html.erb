@@ -3,7 +3,7 @@
 <div class="header">
 
 	<div class="user-info">
-		<form action="/" method="post">
+		<form action="/authenticate" method="post">
 			<%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
 
 			<% if cookies[:isAuthenticated] %>

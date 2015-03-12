@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Syntaxerror</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -12,10 +12,10 @@
 <% if cookies[:isAuthenticated] %>
 	<div class="navigation-bar">
 		<ul>
-			<% if cookies[:role].to_s == "Site Administrator" || cookies[:role].to_s == "Vendor Administrator" %>
+			<% if cookies[:role] == "Site Administrator" || cookies[:role] == "Vendor Administrator" %>
 				<li><%= link_to "Administration", administration_path %></li>
 			<% end %>
-			<% if cookies[:role].to_s != "Customer" %>
+			<% if cookies[:role] != "Customer" %>
 				<li>Product Management</li>
 			<% end %>
 			<li><%= link_to "Products", product_listings_path %></li>
