@@ -1,4 +1,4 @@
-class DropVendorTable < ActiveRecord::Migration
+class DropVendorsTable < ActiveRecord::Migration
   def up
 	drop_table :vendors
   end
