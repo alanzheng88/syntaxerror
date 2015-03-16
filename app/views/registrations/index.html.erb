@@ -2,36 +2,25 @@
 
 <h1>Registration</h1>
 
-<form>
+<%= form_for('', url: {controller: :users, action: :new}) do %>
 	<table>
-		<tr>
-			<td>First name:</td>
-			<td><input type="text" name="First Name"></td>
-		</tr>
-		<tr>
-			<td>Last name:</td>
-			<td><input type="text" name="Last Name"></td>
-		</tr>
-		<tr>
-			<td>Email:</td>
-			<td><input type ="text" name="Email Address"></td>
-		</tr>
-		<tr>
-			<td>Username:</td>
-			<td><input type ="text" name="Username"></td>
-		</tr>
-		<tr>
-			<td>Password:</td>
-			<td><input type ="text" name="Password"></td>
-		</tr>
-		<tr>
-			<td>Confirm Password:</td>
-			<td><input type ="text" name="Confirm Password"></td>
-		</tr>
+		<% @userColumns.each do |userColumn| %>
+			<tr>
+				<td><%= userColumn %></td>
+				
+				<% if userColumn == 'password' %>
+					<td><%= password_field_tag 'secret' %></td>
+					<% next %>
+				<% end %>
+
+				<td><%= text_field_tag(userColumn)%></td>
+			</tr>
+		<% end %>
+
 		<tr>
 			<td><input type="submit" value="Sign Up"></td>
 		</tr>
 	</table>
-</form>
+<% end %>
 
 </body>

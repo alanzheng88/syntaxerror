@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   
   root 'homepage#index'
 
@@ -8,8 +9,8 @@ Rails.application.routes.draw do
 
   get '/thank-you' => 'thank_you#index'
 
-  get '/registrations' => 'registrations#index'
-
+  get '/registration' => 'registrations#index', as: :registration
+  
   get '/payments' => 'payments#index'
 
   get '/shopping-cart' => 'shopping_cart#index'
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
 
   get '/purchase-history' => 'purchase_history#index', as: 'purchase_history'
 
+  post '/users/new' => 'users#new'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

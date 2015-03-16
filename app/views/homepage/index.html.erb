@@ -13,17 +13,20 @@
 				</ul>
 			<% else %>
 				<table>
+
 					<tr>
-						<td><input type="input" name="username" placeholder="username"></td>
+						<td><%= text_field_tag('username', '', placeholder: 'username') %></td>
 					</tr>
 					<tr>
-						<td><input type="password" name="password" placeholder="password"></td>
+						<td><%= password_field_tag(:secret, '', placeholder: 'password') %></td>
 					</tr>
 					<tr>
-						<td><input type="input" name="role" placeholder="this is here to test roles"></td>
+						<td><%= text_field_tag('role', '', placeholder: 'this is here to test roles') %></td>
 					</tr>
 					<tr>
-						<td><input type="submit" value="Sign In"></td>
+						<td><%= submit_tag "Sign In" %></td>
+						<td><%= link_to "registration", registration_path %>
+						</td>
 					</tr>
 				</table>
 			<% end %>
