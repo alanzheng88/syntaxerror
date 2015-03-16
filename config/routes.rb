@@ -4,19 +4,19 @@ Rails.application.routes.draw do
 
   post '/authenticate' => 'homepage#authenticate'
 
-  get '/administration' => 'administrations#index', as: 'administration'
+  get '/administrations' => 'administrations#index', as: :administrations
 
   get '/thank-you' => 'thank_you#index'
 
-  get '/registration' => 'registration#index'
+  get '/registrations' => 'registrations#index'
 
-  get '/payment' => 'payment#index'
+  get '/payments' => 'payments#index'
 
   get '/shopping-cart' => 'shopping_cart#index'
   
-  get '/product-listings' => 'product_listings#index', as: 'product_listings'
+  get '/product-listings' => 'products#index', as: :products
 
-  get '/item-info' => 'item_info#index'
+  get '/item-info/:id' => 'products#show', as: :product
 
   get '/product-management' => 'product_management#index', as: 'product_management'
 

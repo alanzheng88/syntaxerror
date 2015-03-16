@@ -1,0 +1,32 @@
+<body>
+	
+<table>
+	<thead>
+		<tr>
+			<th>name</th>
+			<th>price</th>
+			<th>brand</th>
+			<th>category</th>
+			<th>created at</th>
+			<th>updated at</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><%= @product.name %></td>
+			<td><%= @product.price %></td>
+			<td><%= @product.brand %></td>
+			<td><%= @product.category %></td>
+			<td><%= @product.created_at %></td>
+			<td><%= @product.updated_at %></td>
+		</tr>
+	</tbody>
+</table>
+
+<form>
+	<input type="submit" value="Add to cart">
+</form>
+
+<%= link_to "Back to Product Listings", products_path %>
+
+</body>

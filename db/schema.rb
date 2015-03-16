@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150309073415) do
+ActiveRecord::Schema.define(version: 20150315082227) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,12 +36,46 @@ ActiveRecord::Schema.define(version: 20150309073415) do
     t.datetime "updated_at"
   end
 
+  create_table "products", force: true do |t|
+    t.string   "name"
+    t.decimal  "price",      precision: 8, scale: 2
+    t.string   "brand"
+    t.string   "category"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "purchases", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "registrations", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles", force: true do |t|
+    t.string   "role",       limit: 30
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "username",    limit: 30
+    t.string   "firstname",   limit: 30
+    t.string   "lastname",    limit: 30
+    t.string   "password",    limit: 30
+    t.string   "email",       limit: 254
+    t.integer  "rolekey"
+    t.integer  "userlistkey"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "vendors", force: true do |t|
+    t.string   "vendor",      limit: 30
+    t.integer  "locationkey"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

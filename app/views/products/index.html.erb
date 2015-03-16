@@ -1,0 +1,27 @@
+<body>
+
+<h1>Products</h1>
+
+<form>
+	<table>
+	 	<thead>
+	   		<tr>
+	   			<th>name</th>
+	   			<th>price</th>
+	    	</tr>
+	  	</thead>
+	  	<tbody>
+	  		<% @products.each do |product| %>
+	  		<tr>
+	  			<td><%= product.name %></td>
+	  			<td><%= product.price %></td>
+	  			<td><%= link_to "Show", product %></td>
+	  		</tr>
+	  		<% end %>
+	  	</tbody>
+	</table>
+
+	<input type="submit" value="Order">
+</form>
+
+</body>
