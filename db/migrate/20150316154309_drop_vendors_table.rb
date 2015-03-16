@@ -4,6 +4,6 @@ class DropVendorsTable < ActiveRecord::Migration
   end
 
   def down
-	create_table :vendors
+	raise ActiveRecord::IrreversibleMigration
   end
 end
