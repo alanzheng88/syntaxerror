@@ -2,8 +2,8 @@
 
 one:
   vendor: MyString
-  locationKey: 1
+  locationkey: 1
 
 two:
   vendor: MyString
-  locationKey: 1
+  locationkey: 1
