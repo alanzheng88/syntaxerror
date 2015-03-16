@@ -30,11 +30,11 @@ VALUES
 
 INSERT INTO users (username, firstname, lastname, password, email, rolekey, userlistkey, created_at, updated_at)
 VALUES
-('username1','Wendy','','Password1','asdf1@email.com',1,1,current_timestamp,current_timestamp),
-('username2','Lin','Wei','Password2','asdf2@email.com',2,2,current_timestamp,current_timestamp),
-('username3','David ','McDonald','Password3','asdf3@email.com',3,3,current_timestamp,current_timestamp),
+('username1','Wendy','','Password1','asdf1@email.com',4,1,current_timestamp,current_timestamp),
+('username2','Lin','Wei','Password2','asdf2@email.com',4,2,current_timestamp,current_timestamp),
+('username3','David ','McDonald','Password3','asdf3@email.com',4,3,current_timestamp,current_timestamp),
 ('username4','Victor','Schmatter','Password4','asdf4@email.com',4,4,current_timestamp,current_timestamp),
-('username5','Janice','Wong','Password5','asdf5@email.com',5,5,current_timestamp,current_timestamp),
-('username6','Andy ','Lee','Password6','asdf6@email.com',6,6,current_timestamp,current_timestamp),
-('username7','Wilson','Chan','Password7','asdf7@email.com',7,7,current_timestamp,current_timestamp),
-('username8','Devin ','Sim','Password8','asdf8@email.com',8,8,current_timestamp,current_timestamp)
+('username5','Janice','Wong','Password5','asdf5@email.com',4,5,current_timestamp,current_timestamp),
+('username6','Andy ','Lee','Password6','asdf6@email.com',4,6,current_timestamp,current_timestamp),
+('username7','Wilson','Chan','Password7','asdf7@email.com',4,7,current_timestamp,current_timestamp),
+('username8','Devin ','Sim','Password8','asdf8@email.com',4,8,current_timestamp,current_timestamp)
