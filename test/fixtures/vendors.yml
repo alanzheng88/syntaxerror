@@ -3,7 +3,9 @@
 one:
   vendor: MyString
   locationkey: 1
+  productkey: 1
 
 two:
   vendor: MyString
   locationkey: 1
+  productkey: 1

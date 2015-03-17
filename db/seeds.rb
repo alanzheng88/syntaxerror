@@ -24,11 +24,11 @@ Role.create(role: 'Vendor Adminstrator', created_at: Time.now, updated_at: Time.
 Role.create(role: 'Vendor Manager', created_at: Time.now, updated_at: Time.now)
 Role.create(role: 'User', created_at: Time.now, updated_at: Time.now)
 
-Vendor.create(vendor: 'SmartBuy', locationkey: 1, created_at: Time.now, updated_at: Time.now)
-Vendor.create(vendor: 'KCIX', locationkey: 2, created_at: Time.now, updated_at: Time.now)
-Vendor.create(vendor: 'Present Shop', locationkey: 3, created_at: Time.now, updated_at: Time.now)
-Vendor.create(vendor: 'The Post', locationkey: 4, created_at: Time.now, updated_at: Time.now)
-Vendor.create(vendor: 'ShopComm', locationkey: 5, created_at: Time.now, updated_at: Time.now)
+Vendor.create(vendor: 'SmartBuy', locationkey: 1, productkey: 1, created_at: Time.now, updated_at: Time.now)
+Vendor.create(vendor: 'KCIX', locationkey: 2, productkey: 2, created_at: Time.now, updated_at: Time.now)
+Vendor.create(vendor: 'Present Shop', locationkey: 3, productkey: 3, created_at: Time.now, updated_at: Time.now)
+Vendor.create(vendor: 'The Post', locationkey: 4, productkey: 4, created_at: Time.now, updated_at: Time.now)
+Vendor.create(vendor: 'ShopComm', locationkey: 5, productkey: 5, created_at: Time.now, updated_at: Time.now)
 
 User.create(username: 'username1', firstname: 'Wendy', lastname: '', password: 'Password1', email: 'asdf1@email.com', rolekey: 4, userlistkey: 1, created_at: Time.now, updated_at: Time.now)
 User.create(username: 'username2', firstname: 'Lin', lastname: 'Wei', password: 'Password2', email: 'asdf2@email.com', rolekey: 4, userlistkey: 2, created_at: Time.now, updated_at: Time.now)
