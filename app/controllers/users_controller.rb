@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-	def new
+	def create
 		User.create(username: params[:username],
 			firstname: params[:firstname],
 			lastname: params[:lastname],
@@ -10,4 +10,7 @@ class UsersController < ApplicationController
 		redirect_to root_path
 	end
 
+	def index
+		@users = User.all
+	end
 end

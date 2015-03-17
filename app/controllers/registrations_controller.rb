@@ -1,8 +1,8 @@
 class RegistrationsController < ApplicationController
 	
 	def index
-		@keys = ['id', 'rolekey', 'userlistkey', 'created_at', 'updated_at']
-		@userColumns = User.column_names.delete_if{|name| @keys.include?(name)}
+		userColumnsToDelete = ['id', 'rolekey', 'userlistkey', 'created_at', 'updated_at']
+		@userColumns = column_names_with_exclusions(User.column_names, userColumnsToDelete)
 	end
 
 end

@@ -19,11 +19,14 @@ Rails.application.routes.draw do
 
   get '/item-info/:id' => 'products#show', as: :product
 
-  get '/product-management' => 'product_management#index', as: 'product_management'
+  get '/product-management' => 'product_management#index', as: :product_management
 
-  get '/purchase-history' => 'purchase_history#index', as: 'purchase_history'
+  get '/purchase-history' => 'purchase_history#index', as: :purchase_history
 
-  post '/users/new' => 'users#new'
+  post '/users/new' => 'users#create'
+
+  get '/users' => 'users#index', as: :users
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
