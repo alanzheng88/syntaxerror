@@ -4,16 +4,16 @@
 
 <%= form_for('', url: {controller: :users, action: :create}) do %>
 	<table>
-		<% @userColumns.each do |userColumn| %>
+		<% @user_columns.each do |user_column| %>
 			<tr>
-				<td><%= userColumn %></td>
+				<td><%= user_column %></td>
 				
-				<% if userColumn == 'password' %>
+				<% if user_column == 'password' %>
 					<td><%= password_field_tag 'secret' %></td>
 					<% next %>
 				<% end %>
 
-				<td><%= text_field_tag(userColumn)%></td>
+				<td><%= text_field_tag(user_column)%></td>
 			</tr>
 		<% end %>
 

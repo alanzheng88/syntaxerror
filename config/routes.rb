@@ -27,6 +27,8 @@ Rails.application.routes.draw do
 
   get '/users' => 'users#index', as: :users
 
+  delete '/user/:id' => 'users#destroy', as: :user
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

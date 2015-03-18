@@ -15,37 +15,33 @@
     	</select>	
     	<input type="submit" value="Assign Role">
       <p>
-        <%= link_to "list of all users and roles", users_path %>
+        <%= link_to "list of all users and roles", :users %>
       </p>
     </form>
   </div>
 
-  <div id="user-role-assigned-table">
-    <table border="2">
-      <thead>
-        <tr>
-          <td>ID</td>
-          <td>Name</td>
-          <td>Role</td>
-          <td></td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>123456</td>
-          <td>Alan Zheng</td>
-          <td>Vendor Manager</td>
-          <td>Delete</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+
+  <%= content_tag(:table) do %>
+    <%= draw_user_role_columns %>
+    <% @user_list.each do |user| %>
+      <tr>
+        <td><%= user.username %></td>
+        <td><%= user.firstname %></td>
+        <td><%= user.lastname %></td>
+        <td><%= user.role.role %></td>
+        <td><%= link_to "delete", user, method: :delete %></td>
+      </tr>
+    <% end %>
+  <% end %>
 
 </div>
 
 </body>
 
+
+
 <% if false %>
+
 <table>
   <thead>
     <tr>
