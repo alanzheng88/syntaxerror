@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 			lastname: params[:lastname],
 			password: params[:secret],
 			email: params[:email],
-			rolekey: 4)
+			role_id: 4)
 		redirect_to root_path
 	end
 
