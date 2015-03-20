@@ -6,18 +6,18 @@
 
 
 <div id="role-assignment">
-  <h1>Assign role to user</h1>
-  <%= form_for(:user, url: {controller: :users, action: :edit}) do |f| %>
+  <h3>Assign role to user</h3>
+  <%= form_for(:user, url: {controller: :users}) do |f| %>
   	<input type="text" id="username" name="Username" placeholder="Username">
   	<select name="role-id">
   		<option value="2">Vendor Admin</option>
   		<option value="3">Vendor Manager</option>
   	</select>	
-  	<input type="submit" value="Assign Role">
+  	<%= f.submit 'Assign Role' %>
     <p>
       <%= link_to "list of all users and roles", :users %>
     </p>
-  </form>
+  <% end %>
 </div>
 
 

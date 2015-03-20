@@ -12,5 +12,4 @@ class AdministrationsController < ApplicationController
 		end
 	end
 
-
 end
