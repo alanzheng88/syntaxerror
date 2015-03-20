@@ -1,18 +1,15 @@
 class HomepageController < ApplicationController
 
-def index
-end
+	def authenticate
+		
+		cookies[:isAuthenticated] ||= false 
+		if !cookies[:isAuthenticated]
+			cookies[:username] = { :value => params[:username], :expires => 1.hour.from_now }
+			cookies[:role] = { :value => params[:role], :expires => 1.hour.from_now }
+			cookies[:isAuthenticated] = { :value => !cookies[:username].nil?, :expires => 1.hour.from_now }
+		end
 
-def authenticate
-	
-	cookies[:isAuthenticated] ||= false 
-	if !cookies[:isAuthenticated]
-		cookies[:username] = { :value => params[:username], :expires => 60.seconds.from_now }
-		cookies[:role] = { :value => params[:role], :expires => 60.seconds.from_now }
-		cookies[:isAuthenticated] = { :value => !cookies[:username].nil?, :expires => 60.seconds.from_now }
+		render 'index'
 	end
-
-	render action: 'index'
-end
 
 end

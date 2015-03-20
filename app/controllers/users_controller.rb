@@ -7,13 +7,18 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		User.create(username: params[:username],
-			firstname: params[:firstname],
-			lastname: params[:lastname],
-			password: params[:secret],
-			email: params[:email],
-			role_id: 4)
-		redirect_to root_path
+		@user = User.new(person_params)
+		if @user.save
+			redirect_to root_path
+		else
+			render "registrations/index"
+		end
+	end
+
+	def person_params
+		params.require(:user).permit(:username, :firstname, 
+			:lastname, :password, :password_confirmation, :email,
+			:role_id, :created_at, :updated_at)
 	end
 
 	def index

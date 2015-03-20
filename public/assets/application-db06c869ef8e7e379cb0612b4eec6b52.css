@@ -19,6 +19,10 @@
 .user-info {
   float: right;
 }
+/* line 5, /Users/alanzheng/syntaxerror/app/assets/stylesheets/registrations.css.scss */
+ul.signup_errors {
+  list-style-type: none;
+}
 /* line 1, /Users/alanzheng/syntaxerror/app/assets/stylesheets/scaffolds.css.scss */
 body {
   background-color: #fff;

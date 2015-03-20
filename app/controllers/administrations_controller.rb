@@ -12,8 +12,5 @@ class AdministrationsController < ApplicationController
 		end
 	end
 
-	def delete
-		redirect_to :administrations
-	end
 
 end

@@ -2,25 +2,24 @@
 
 <h1>Registration</h1>
 
-<%= form_for('', url: {controller: :users, action: :create}) do %>
-	<table>
-		<% @user_columns.each do |user_column| %>
-			<tr>
-				<td><%= user_column %></td>
-				
-				<% if user_column == 'password' %>
-					<td><%= password_field_tag 'secret' %></td>
-					<% next %>
-				<% end %>
-
-				<td><%= text_field_tag(user_column)%></td>
-			</tr>
+<% if @user.errors.any? %>
+	<ul class="signup_errors">
+		<% for message_error in @user.errors.full_messages %>
+			<li>* <%= message_error %></li>
 		<% end %>
-
-		<tr>
-			<td><input type="submit" value="Sign Up"></td>
-		</tr>
-	</table>
+	</ul>
 <% end %>
+
+<div class="registration_form">
+	<%= form_for(:user, url: {controller: :users, action: :create}) do |f| %>
+		<p> Username <%= f.text_field :username %> </p>
+		<p> First Name <%= f.text_field :firstname %> </p>
+		<p> Last Name <%= f.text_field :lastname %> </p>
+		<p> Password <%= f.password_field :password %> </p>
+		<p> Password Confirmation <%= f.password_field :password_confirmation %> </p>
+		<p> Email <%= f.text_field :email %> </p>
+		<%= f.submit :Signup %>
+	<% end %>
+</div>
 
 </body>
