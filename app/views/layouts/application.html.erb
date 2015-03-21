@@ -15,7 +15,7 @@
 			<% if session[:role] == "Site Administrator" || session[:role] == "Vendor Administrator" %>
 				<li><%= link_to "Administration", administrations_path %></li>
 			<% end %>
-			<% if session[:role] != "Customer" %>
+			<% if session[:role] != "User" %>
 				<li><%= link_to "Product Management", product_management_path %></li>
 			<% end %>
 			<li><%= link_to "Products", products_path %></li>

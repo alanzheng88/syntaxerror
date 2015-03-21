@@ -3,7 +3,7 @@
 <div class="header">
 
 	<div class="user-info">
-		<form action="/authenticate" method="post">
+		<%= form_tag(action: :login_attempt) do %>
 			<%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
 
 			<% if session[:isAuthenticated] %>
@@ -13,29 +13,37 @@
 				</ul>
 			<% else %>
 				<table>
+					<tr>
+						<td><%= text_field_tag(:username, '', placeholder: 'username') %></td>
+					</tr>
+					<tr>
+						<td><%= password_field_tag(:login_password, '', placeholder: 'password') %></td>
+					</tr>
+
+					<%-# Used for testing roles -%>
+					<% if false %>
+					<tr>
+						<td><%= text_field_tag(:role, '', placeholder: 'this is here to test roles') %></td>
+					</tr>
+					<% end %>
 
 					<tr>
-						<td><%= text_field_tag('username', '', placeholder: 'username') %></td>
-					</tr>
-					<tr>
-						<td><%= password_field_tag(:secret, '', placeholder: 'password') %></td>
-					</tr>
-					<tr>
-						<td><%= text_field_tag('role', '', placeholder: 'this is here to test roles') %></td>
-					</tr>
-					<tr>
-						<td><%= submit_tag "Sign In" %></td>
+						<td><%= submit_tag("Sign In") %></td>
 						<td><%= link_to "registration", registration_path %>
 						</td>
 					</tr>
+					<tr>
+						<td><%= flash[:notice] %></td>
+					</tr>
 				</table>
 			<% end %>
-		</form>
+		<% end %>
 	</div>
 
 </div>
 
-<% @page_title = "Welcome to ShopCommCanada!" %>
+<h6><%= flash[:registration_status] %></h6>
+<h1>Welcome to ShopCommCanada!</h1>
 
 <div class="product-listings">
 	<h3>Products of the Day</h3>

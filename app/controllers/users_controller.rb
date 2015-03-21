@@ -13,12 +13,10 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(user_params)
 		if @user.save
-			#flash[:notice] = "You signed up successfully"
-			#flash[:color] = "valid"
+			flash[:registration_status] = "You signed up successfully"
 			redirect_to root_path
 		else
-			#flash[:notice] = "Form is invalid"
-			#flash[:color] = "invalid"
+			flash[:registration_status] = "Form is invalid"
 			render :new
 		end
 	end
