@@ -7,7 +7,7 @@
   <h3>Assign role to user</h3>
   <%= form_for(:user, controller: :administrations, action: :assign_role, method: :put) do |f| %>
     <p> Username <%= f.text_field :username %> </p>
-    <%= collection_select(:role, :role_id, Role.where(id: [2,3]), :id, :name_with_initial, prompt: true) %>
+    <%= collection_select(:role, :role_id, Role.where(id: @_role_id), :id, :name_with_initial, prompt: true) %>
     <%= f.submit 'Assign Role' %>
   <% end %>
   <p><%= link_to "Display list of unassigned users", :users %></p>
