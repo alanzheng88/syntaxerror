@@ -5,7 +5,7 @@
 <%# http://stackoverflow.com/questions/8907867/can-someone-explain-collection-select-to-me-in-clear-simple-terms %>
 <div id="role-assignment">
   <h3>Assign role to user</h3>
-  <%= form_for(:user, controller: :administrations, action: :edit, method: :put) do |f| %>
+  <%= form_for(:user, controller: :administrations, action: :assign_role, method: :put) do |f| %>
     <p> Username <%= f.text_field :username %> </p>
     <%= collection_select(:role, :role_id, Role.where(id: [2,3]), :id, :name_with_initial, prompt: true) %>
     <%= f.submit 'Assign Role' %>
@@ -22,7 +22,7 @@
       <td><%= user.firstname %></td>
       <td><%= user.lastname %></td>
       <td><%= user.role.role %></td>
-      <td><%= link_to "unassign", user, method: :unassign %></td>
+      <td><%= link_to "unassign", unassign_role_path(user.id), method: :put %></td>
       <td><%= link_to "delete", user, method: :delete, data: {confirm: "This will permanently delete the user from the database. Do you want to continue?"} %></td>
     </tr>
   <% end %>

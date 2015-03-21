@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 
   get '/administrations' => 'administrations#index', as: :administrations
 
-  put '/administrations' => 'administrations#edit'
+  put '/administrations' => 'administrations#assign_role'
+  
+  put '/administrations/:id' => 'administrations#unassign_role', as: :unassign_role
 
   get '/thank-you' => 'thank_you#index'
 

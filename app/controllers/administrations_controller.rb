@@ -16,7 +16,7 @@ class AdministrationsController < ApplicationController
 
 	# Update the user for the specified username with the corresponding role
 	# Information is taken from administration index page
-	def edit
+	def assign_role
 		_username = user_params[:username]
 		_role_id = role_params[:role_id]
 		puts "params username: #{user_params[:username]}"
@@ -28,8 +28,11 @@ class AdministrationsController < ApplicationController
 		redirect_to :administrations 
 	end
 
-	def unassign
-		puts "unassigning"
+	def unassign_role
+		user = User.find(params[:id])
+		user.role_id = 4
+		user.save
+		redirect_to :administrations
 	end
 
 	def user_params
