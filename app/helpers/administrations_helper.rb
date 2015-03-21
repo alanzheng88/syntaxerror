@@ -9,7 +9,6 @@ module AdministrationsHelper
 			    concat(content_tag(:th, 'Firstname'))
 			    concat(content_tag(:th, 'Lastname'))
 			    concat(content_tag(:th, 'Role'))
-
 		 	end #content_tag :tr
 		end #content_tag :thead
 		tags.join.html_safe

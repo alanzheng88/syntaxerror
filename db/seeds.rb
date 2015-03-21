@@ -20,7 +20,7 @@ Product.create!(name: 'Krusche Quick S3', price: 699, brand: 'Krusche Corp', cat
 Product.create!(name: 'Krusche USB Charger', price: 14.49, brand: 'Krusche Corp', category: 'MISC', created_at: Time.now, updated_at: Time.now)
 
 Role.create!(role: 'Site Administrator', created_at: Time.now, updated_at: Time.now)
-Role.create!(role: 'Vendor Adminstrator', created_at: Time.now, updated_at: Time.now)
+Role.create!(role: 'Vendor Administrator', created_at: Time.now, updated_at: Time.now)
 Role.create!(role: 'Vendor Manager', created_at: Time.now, updated_at: Time.now)
 Role.create!(role: 'User', created_at: Time.now, updated_at: Time.now)
 

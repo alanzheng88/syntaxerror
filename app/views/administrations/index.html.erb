@@ -1,26 +1,19 @@
 <body>
 
-<div class="title">
-  <h1>Administration</h1>
-</div>
+<h1>Administration</h1>
 
-
+<%# http://stackoverflow.com/questions/8907867/can-someone-explain-collection-select-to-me-in-clear-simple-terms %>
 <div id="role-assignment">
   <h3>Assign role to user</h3>
-  <%= form_for(:user, url: {controller: :users}) do |f| %>
-  	<input type="text" id="username" name="Username" placeholder="Username">
-  	<select name="role-id">
-  		<option value="2">Vendor Admin</option>
-  		<option value="3">Vendor Manager</option>
-  	</select>	
-  	<%= f.submit 'Assign Role' %>
-    <p>
-      <%= link_to "list of all users and roles", :users %>
-    </p>
+  <%= form_for(:user, controller: :administrations, action: :edit, method: :put) do |f| %>
+    <p> Username <%= f.text_field :username %> </p>
+    <%= collection_select(:role, :role_id, Role.where(id: [2,3]), :id, :name_with_initial, prompt: true) %>
+    <%= f.submit 'Assign Role' %>
   <% end %>
+  <p><%= link_to "Display list of unassigned users", :users %></p>
 </div>
 
-
+<h3>Users with assigned roles</h3>
 <%= content_tag(:table) do %>
   <%= draw_user_role_columns %>
   <% @user_list.each do |user| %>
@@ -29,37 +22,10 @@
       <td><%= user.firstname %></td>
       <td><%= user.lastname %></td>
       <td><%= user.role.role %></td>
-      <td><%= link_to "delete", user, method: :delete %></td>
+      <td><%= link_to "unassign", user, method: :unassign %></td>
+      <td><%= link_to "delete", user, method: :delete, data: {confirm: "This will permanently delete the user from the database. Do you want to continue?"} %></td>
     </tr>
   <% end %>
 <% end %>
 
-
 </body>
-
-
-
-<% if false %>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @administrations.each do |administration| %>
-      <tr>
-        <td><%= link_to 'Show', administration %></td>
-        <td><%= link_to 'Edit', edit_administration_path(administration) %></td>
-        <td><%= link_to 'Destroy', administration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Administration', new_administration_path %>
-<% end %>

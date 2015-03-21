@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		@user = User.new(person_params)
+		@user = User.new(user_params)
 		if @user.save
 			redirect_to root_path
 		else
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 		end
 	end
 
-	def person_params
+	def user_params
 		params.require(:user).permit(:username, :firstname, 
 			:lastname, :password, :password_confirmation, :email,
 			:role_id, :created_at, :updated_at)
@@ -25,14 +25,15 @@ class UsersController < ApplicationController
 		@users = []
 		allUsers = User.all
 		if cookies[:role] == 'Site Administrator'
-			@users = allUsers.where(role_id: [2,3,4])
+			@users = allUsers.where(role_id: [4])
 		elsif cookies[:role] == 'Vendor Administrator'
-			@users = allUsers.where(role_id: [3,4])
+			@users = allUsers.where(role_id: [4])
 		end
 	end
 
 	def destroy
 		@user.destroy
 		redirect_to :back	
-	end	
+	end
+
 end
