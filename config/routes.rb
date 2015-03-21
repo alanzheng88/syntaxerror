@@ -12,8 +12,6 @@ Rails.application.routes.draw do
   put '/administrations/:id' => 'administrations#unassign_role', as: :unassign_role
 
   get '/thank-you' => 'thank_you#index'
-
-  get '/registration' => 'registrations#index', as: :registration
   
   get '/payments' => 'payments#index'
 
@@ -27,8 +25,10 @@ Rails.application.routes.draw do
 
   get '/purchase-history' => 'purchase_history#index', as: :purchase_history
 
-  post '/users/new' => 'users#create'
-
+  get '/users/new' => 'users#new', as: :registration
+  
+  post '/users/create' => 'users#create'
+ 
   get '/users' => 'users#index', as: :users
 
   delete '/user/:id' => 'users#destroy', as: :user
