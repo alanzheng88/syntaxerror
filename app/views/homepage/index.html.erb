@@ -6,10 +6,10 @@
 		<form action="/authenticate" method="post">
 			<%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
 
-			<% if cookies[:isAuthenticated] %>
+			<% if session[:isAuthenticated] %>
 				<ul>
-					<li><%= cookies[:username] %></li>
-					<li><%= cookies[:role] %></li>
+					<li><%= session[:username] %></li>
+					<li><%= session[:role] %></li>
 				</ul>
 			<% else %>
 				<table>

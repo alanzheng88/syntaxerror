@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 	def index
 		@users = []
 		allUsers = User.all
-		if cookies[:role] == 'Site Administrator' || cookies[:role] == 'Vendor Administrator'
+		if session[:role] == 'Site Administrator' || session[:role] == 'Vendor Administrator'
 			@users = allUsers.where(role_id: [4])
 		end
 	end

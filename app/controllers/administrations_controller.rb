@@ -2,9 +2,9 @@ class AdministrationsController < ApplicationController
 
 	def index
 		@_role_id = []
-		if cookies[:role] == 'Site Administrator'
+		if session[:role] == 'Site Administrator'
 			@_role_id = [2,3]
-		elsif cookies[:role] == 'Vendor Administrator'
+		elsif session[:role] == 'Vendor Administrator'
 			@_role_id = [3]
 		end
 		@user_list = User.where(role_id: @_role_id) || []

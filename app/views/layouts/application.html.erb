@@ -9,13 +9,13 @@
 <body>
 
 <%= link_to "Back to Homepage", root_path %>
-<% if cookies[:isAuthenticated] %>
+<% if session[:isAuthenticated] %>
 	<div class="navigation-bar">
 		<ul>
-			<% if cookies[:role] == "Site Administrator" || cookies[:role] == "Vendor Administrator" %>
+			<% if session[:role] == "Site Administrator" || session[:role] == "Vendor Administrator" %>
 				<li><%= link_to "Administration", administrations_path %></li>
 			<% end %>
-			<% if cookies[:role] != "Customer" %>
+			<% if session[:role] != "Customer" %>
 				<li><%= link_to "Product Management", product_management_path %></li>
 			<% end %>
 			<li><%= link_to "Products", products_path %></li>
