@@ -16,7 +16,6 @@ class UsersController < ApplicationController
 			flash[:registration_status] = "You signed up successfully"
 			redirect_to root_path
 		else
-			flash[:registration_status] = "Form is invalid"
 			render :new
 		end
 	end
