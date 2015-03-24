@@ -2,14 +2,6 @@
 
 one:
   name: MyString
-  price: 9.99
-  brand_id: 
-  category_id: 
-  quantity: 1
 
 two:
   name: MyString
-  price: 9.99
-  brand_id: 
-  category_id: 
-  quantity: 1

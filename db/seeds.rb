@@ -6,18 +6,29 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Product.create!(name: 'QuickWatch', price: 299, brand: 'Xiaowei Inc.', category: 'Wearable Tech', created_at: Time.now, updated_at: Time.now)
-Product.create!(name: 'Precision-Book X Series', price: 899, brand: 'Xiaowei Inc.', category: 'Computers & laptops', created_at: Time.now, updated_at: Time.now)
-Product.create!(name: 'PrecisionCell P series', price: 499, brand: 'Xiaowei Inc.', category: 'Mobile Devices', created_at: Time.now, updated_at: Time.now)
-Product.create!(name: 'PrecisionCell adaptor', price: 26.99, brand: 'Xiaowei Inc.', category: 'MISC', created_at: Time.now, updated_at: Time.now)
-Product.create!(name: 'Smartgear', price: 349, brand: 'Smartcell Tech', category: 'Wearable Tech', created_at: Time.now, updated_at: Time.now)
-Product.create!(name: 'Smartbook', price: 879.99, brand: 'Smartcell Tech', category: 'Computers & laptops', created_at: Time.now, updated_at: Time.now)
-Product.create!(name: 'Smartcell', price: 699, brand: 'Smartcell Tech', category: 'Mobile Devices', created_at: Time.now, updated_at: Time.now)
-Product.create!(name: 'Smartbook laptop protector', price: 69.99, brand: 'Smartcell Tech', category: 'MISC', created_at: Time.now, updated_at: Time.now)
-Product.create!(name: 'Krusche Time (T-series)', price: 399, brand: 'Krusche Corp', category: 'Wearable Tech', created_at: Time.now, updated_at: Time.now)
-Product.create!(name: 'Krusche Mint II', price: 799, brand: 'Krusche Corp', category: 'Computers & laptops', created_at: Time.now, updated_at: Time.now)
-Product.create!(name: 'Krusche Quick S3', price: 699, brand: 'Krusche Corp', category: 'Mobile Devices', created_at: Time.now, updated_at: Time.now)
-Product.create!(name: 'Krusche USB Charger', price: 14.49, brand: 'Krusche Corp', category: 'MISC', created_at: Time.now, updated_at: Time.now)
+Product.create!(name: 'QuickWatch', price: 299, brand_id: 1, category_id: 1, created_at: Time.now, updated_at: Time.now)
+Product.create!(name: 'Precision-Book X Series', price: 899, brand_id: 1, category_id: 2, created_at: Time.now, updated_at: Time.now)
+Product.create!(name: 'PrecisionCell P series', price: 499, brand_id: 1, category_id: 3, created_at: Time.now, updated_at: Time.now)
+Product.create!(name: 'PrecisionCell adaptor', price: 26.99, brand_id: 1, category_id: 4, created_at: Time.now, updated_at: Time.now)
+Product.create!(name: 'Smartgear', price: 349, brand_id: 2, category_id: 1, created_at: Time.now, updated_at: Time.now)
+Product.create!(name: 'Smartbook', price: 879.99, brand_id: 2, category_id: 2, created_at: Time.now, updated_at: Time.now)
+Product.create!(name: 'Smartcell', price: 699, brand_id: 2, category_id: 3, created_at: Time.now, updated_at: Time.now)
+Product.create!(name: 'Smartbook laptop protector', price: 69.99, brand_id: 2, category_id: 4, created_at: Time.now, updated_at: Time.now)
+Product.create!(name: 'Krusche Time (T-series)', price: 399, brand_id: 3, category_id: 1, created_at: Time.now, updated_at: Time.now)
+Product.create!(name: 'Krusche Mint II', price: 799, brand_id: 3, category_id: 2, created_at: Time.now, updated_at: Time.now)
+Product.create!(name: 'Krusche Quick S3', price: 699, brand_id: 3, category_id: 3, created_at: Time.now, updated_at: Time.now)
+Product.create!(name: 'Krusche USB Charger', price: 14.49, brand_id: 3, category_id: 4, created_at: Time.now, updated_at: Time.now)
+
+brands = ['Xiaowei Inc.', 'Smartcell Tech', 'Krusche Crop']
+brands.each do |brand|
+	Brand.create!(name: brand, created_at: Time.now, updated_at: Time.now)
+end
+
+categories = ['Wearable Tech','Computers & laptops','Mobile Devices','MISC']
+categories.each do |category|
+	Category.create!(name: category, created_at: Time.now, updated_at: Time.now)
+end
+
 
 Role.create!(role: 'Site Administrator', created_at: Time.now, updated_at: Time.now)
 Role.create!(role: 'Vendor Administrator', created_at: Time.now, updated_at: Time.now)

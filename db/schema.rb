@@ -11,10 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150320060509) do
+ActiveRecord::Schema.define(version: 20150323095003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "brands", force: true do |t|
+    t.string   "name",       limit: 30
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "brands", ["name"], name: "index_brands_on_name", unique: true, using: :btree
+
+  create_table "categories", force: true do |t|
+    t.string   "name",       limit: 30
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "categories", ["name"], name: "index_categories_on_name", unique: true, using: :btree
 
   create_table "homepages", force: true do |t|
     t.datetime "created_at"
@@ -22,13 +38,17 @@ ActiveRecord::Schema.define(version: 20150320060509) do
   end
 
   create_table "products", force: true do |t|
-    t.string   "name"
-    t.decimal  "price",      precision: 8, scale: 2
-    t.string   "brand"
-    t.string   "category"
+    t.string   "name",        limit: 30
+    t.decimal  "price",                  precision: 10, scale: 2
+    t.integer  "brand_id"
+    t.integer  "category_id"
+    t.integer  "quantity",                                        default: 1
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "products", ["brand_id"], name: "index_products_on_brand_id", using: :btree
+  add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "role",       limit: 30
