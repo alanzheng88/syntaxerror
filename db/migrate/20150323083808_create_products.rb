@@ -1,6 +1,5 @@
 class CreateProducts < ActiveRecord::Migration
   def change
-    drop_table :products
     create_table :products do |t|
       t.string :name, limit: 30
       t.decimal :price, precision: 10, scale: 2
