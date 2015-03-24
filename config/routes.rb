@@ -7,10 +7,6 @@ Rails.application.routes.draw do
 
   get '/administrations' => 'administrations#index', as: :administrations
 
-  put '/administrations' => 'administrations#assign_role'
-  
-  put '/administrations/:id' => 'administrations#unassign_role', as: :unassign_role
-
   get '/thank-you' => 'thank_you#index'
   
   get '/payments' => 'payments#index'
@@ -33,6 +29,10 @@ Rails.application.routes.draw do
 
   delete '/user/:id' => 'users#destroy', as: :user
 
+  put '/users' => 'users#assign_role', as: :assign_role
+
+  put '/users/:id' => 'users#unassign_role', as: :unassign_role
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

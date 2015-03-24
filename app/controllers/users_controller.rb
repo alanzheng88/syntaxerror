@@ -39,4 +39,31 @@ class UsersController < ApplicationController
 		redirect_to :back	
 	end
 
+	# Update the user for the specified username with the corresponding role
+	# Information is taken from administration index page
+	def assign_role
+		_username = user_params[:username]
+		_role_id = role_params[:role_id]
+		user = User.where(username: _username).first
+		if user.present?
+			user.role_id = _role_id.presence || user.role_id
+			user.save
+		else
+			flash[:assign_role_status] = "The username provided does not exist!"
+		end
+ 		redirect_to :administrations 
+	end
+
+	# Unassign by setting user to have the role 'user'
+	def unassign_role
+		user = User.find(params[:id])
+		user.role_id = 4
+		user.save
+		redirect_to :administrations
+	end
+
+	def role_params
+		params.require(:role).permit(:role_id)
+	end
+
 end
