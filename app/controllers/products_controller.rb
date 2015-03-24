@@ -6,17 +6,14 @@ class ProductsController < ApplicationController
 		@products = Product.all
 	end
 
-	def index
-	end
-
 	def show
 		@product = @products.find(params[:id])
 	end
 
-	def edit
-	end
-
-	def update
+	# add a new product in the product management page
+	def new
+		@categories = Category.all
+		@vendor = @user.vendor.name if @user.vendor.present?
 	end
 
 	def destroy

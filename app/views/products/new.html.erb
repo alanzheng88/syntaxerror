@@ -1,13 +1,13 @@
 <body>
 
 <h1>Product Management</h1>
+<h3>Vendor: <%= @vendor or "Unassigned" %> </h3>
 
 <%= form_for(:products, url: product_management_path, action: :new) do |f| %>
-
 	<p> Product Name <%= f.text_field :name %> </p>
 	<p> Price <%= f.number_field :price, value: 0 %> </p>
 	<p> Brand <%= collection_select(:brand, :brand_id, Brand.all, :id, :brand_name) %> </p>
-	<p> Category <%= collection_select(:category, :category_id, Category.all, :id, :category_name) %> </p>
+	<p> Category <%= collection_select(:category, :category_id, @categories, :id, :category_name) %> </p>
 
 	<%= submit_tag "Add to Products" %>
 <% end %>
