@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   get '/item-info/:id' => 'products#show', as: :product
 
-  get '/product-management' => 'product_management#index', as: :product_management
+  get '/product-management' => 'products#new', as: :product_management  
 
   get '/purchase-history' => 'purchase_history#index', as: :purchase_history
 
