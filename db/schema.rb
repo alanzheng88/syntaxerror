@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150324064058) do
+ActiveRecord::Schema.define(version: 20150326032333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,11 +50,29 @@ ActiveRecord::Schema.define(version: 20150324064058) do
   add_index "products", ["brand_id"], name: "index_products_on_brand_id", using: :btree
   add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
 
+  create_table "products_sales", id: false, force: true do |t|
+    t.integer "product_id", null: false
+    t.integer "sale_id",    null: false
+  end
+
+  add_index "products_sales", ["product_id", "sale_id"], name: "index_products_sales_on_product_id_and_sale_id", using: :btree
+  add_index "products_sales", ["sale_id", "product_id"], name: "index_products_sales_on_sale_id_and_product_id", using: :btree
+
   create_table "roles", force: true do |t|
     t.string   "role",       limit: 30
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "sales", force: true do |t|
+    t.string   "product",    limit: 30
+    t.decimal  "sumtotal",              precision: 10, scale: 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "vendor_id"
+  end
+
+  add_index "sales", ["vendor_id"], name: "index_sales_on_vendor_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username",   limit: 30

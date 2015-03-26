@@ -50,3 +50,32 @@ User.create!(username: 'andy9', firstname: 'Andy ', lastname: 'Lee', password: '
 User.create!(username: 'wilsonchan', firstname: 'Wilson', lastname: 'Chan', password: 'Password123', email: 'asdf7@email.com', role_id: 3, vendor_id: 4, created_at: Time.now, updated_at: Time.now)
 User.create!(username: 'devin123', firstname: 'Devin ', lastname: 'Sim', password: 'Password123', email: 'asdf8@email.com', role_id: 4, created_at: Time.now, updated_at: Time.now)
 User.create!(username: 'alanz', firstname: 'Alan ', lastname: 'Zheng', password: 'Password2', email: 'alanz@sfu.ca', role_id: 1, vendor_id: 5, created_at: Time.now, updated_at: Time.now)
+
+# Add products to vendors
+products = ["QuickWatch", "Precision-Book X Series", 
+	"PrecisionCell P series", "PrecisionCell adaptor",
+	"Smartgear", "Smartbook", "Smartcell", "Smartbook laptop protector",
+	"Krusche Time (T-series)", "Krusche Mint II", "Krusche Quick S3",
+	"Krusche USB Charger"]
+vendorToProducts = {
+	"SmartBuy": [products[4], products[5], products[8], products[0], products[10]],
+	"KCIX": [products[0], products[1], products[9], products[10], products[6]],
+	"Present Shop": products,
+	"The Post": [products[0], products[3], products[6], products[10], products[4]]
+}
+
+# Assume each vendor has an array of products
+vendorToProducts.each do |vendor, productList|
+	productList.each do |product|
+		randomSumAmount = rand(95) + 5
+		productToAdd = Product.where(name: product).first
+		sale = Sale.create(product: productToAdd, sumtotal: randomSumAmount)
+		v = Vendor.where(name: vendor).first
+		v.sales << sale
+	end
+end
+
+
+
+
+
