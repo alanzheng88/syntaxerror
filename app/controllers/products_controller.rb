@@ -13,7 +13,8 @@ class ProductsController < ApplicationController
 	# add a new product in the product management page
 	def new
 		@categories = Category.all
-		@vendor = @user.vendor.name if @user.vendor.present?
+		@vendor_name = @user.vendor.name if @user.vendor.present?
+		@vendor_products = @user.get_vendor_products
 	end
 
 	def destroy

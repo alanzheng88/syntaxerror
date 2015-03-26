@@ -18,4 +18,15 @@ class User < ActiveRecord::Base
 	def match_password(login_password)
 		return self.password == login_password
 	end
+
+	# Get all products associated to a vendor of a user
+	def get_vendor_products
+		products = []
+		_sales = self.vendor.sales
+		_sales.each do |sale|
+			_product = Product.where(name: sale.product).first
+			products |= [_product]
+		end
+		return products
+	end
 end
