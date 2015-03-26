@@ -20,13 +20,21 @@ class User < ActiveRecord::Base
 	end
 
 	# Get all products associated to a vendor of a user
-	def get_vendor_products
-		products = []
+	def get_vendor_product_names_and_counts
+		product_names = []
 		_sales = self.vendor.sales
 		_sales.each do |sale|
-			_product = Product.where(name: sale.product).first
-			products |= [_product]
+			_product_name = Product.where(name: sale.product).first.name
+			product_names |= [_product_name]
 		end
-		return products
+
+		products_and_count_hash = {}
+
+		product_names.each do |_product_name|
+			_count = _sales.where(product: _product_name).count
+			products_and_count_hash[_product_name] = _count
+		end
+		
+		return products_and_count_hash
 	end
 end

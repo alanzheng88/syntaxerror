@@ -16,15 +16,15 @@
 <table>
 	<thead>
 		<tr>
-			<th>Product</th>
-			<th></th>
+			<th>Products</th>
+			<th>Quantity</th>
 		</tr>
 	</thead>
 	<tbody>
-		<% @vendor_products.each do |vendor_product| %>
+		<% @vendor_products_and_counts.each do |vendor_product_name, count| %>
 			<tr>
-				<td><%= vendor_product.name %></td>
-				<td><%= link_to "Delete", method: :delete %></td>
+				<td><%= vendor_product_name %></td>
+				<td><%= count %></td>
 			</tr>
 		<% end %>
 	</tbody>

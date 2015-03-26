@@ -10,11 +10,11 @@ class ProductsController < ApplicationController
 		@product = @products.find(params[:id])
 	end
 
-	# add a new product in the product management page
+	# add a new product to the product management page
 	def new
 		@categories = Category.all
 		@vendor_name = @user.vendor.name if @user.vendor.present?
-		@vendor_products = @user.get_vendor_products
+		@vendor_products_and_counts = @user.get_vendor_product_names_and_counts
 	end
 
 	def destroy
