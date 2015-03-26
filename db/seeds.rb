@@ -58,17 +58,17 @@ products = ["QuickWatch", "Precision-Book X Series",
 	"Krusche Time (T-series)", "Krusche Mint II", "Krusche Quick S3",
 	"Krusche USB Charger"]
 vendorToProducts = {
-	"SmartBuy": [products[4], products[5], products[8], products[0], products[10]],
-	"KCIX": [products[0], products[1], products[9], products[10], products[6]],
-	"Present Shop": products,
-	"The Post": [products[0], products[3], products[6], products[10], products[4]]
+	"SmartBuy" => [products[4], products[5], products[8], products[0], products[10]],
+	"KCIX" => [products[0], products[1], products[9], products[10], products[6]],
+	"Present Shop" => products,
+	"The Post" => [products[0], products[3], products[6], products[10], products[4]]
 }
 
 # Assume each vendor has an array of products
 vendorToProducts.each do |vendor, productList|
 	productList.each do |product|
 		randomSumAmount = rand(95) + 5
-		productToAdd = Product.where(name: product).first
+		productToAdd = Product.where(name: product).first.name
 		sale = Sale.create(product: productToAdd, sumtotal: randomSumAmount)
 		v = Vendor.where(name: vendor).first
 		v.sales << sale
