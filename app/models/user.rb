@@ -23,7 +23,11 @@ class User < ActiveRecord::Base
 	# price associated with a vendor
 	def get_vendor_inventory_products
 		_inventory = self.vendor.inventory
-		return _inventory.inventories_products
+		if _inventory.present?
+			return _inventory.inventories_products
+		else
+			return []
+		end
 	end
 
 	# Get all products associated to a vendor of a user
