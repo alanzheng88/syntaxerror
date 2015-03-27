@@ -19,22 +19,30 @@ class User < ActiveRecord::Base
 		return self.password == login_password
 	end
 
-	# Get all products associated to a vendor of a user
-	def get_vendor_product_names_and_counts
-		product_names = []
-		_sales = self.vendor.sales
-		_sales.each do |sale|
-			_product_name = Product.where(name: sale.product).first.name
-			product_names |= [_product_name]
-		end
-
-		products_and_count_hash = {}
-
-		product_names.each do |_product_name|
-			_count = _sales.where(product: _product_name).count
-			products_and_count_hash[_product_name] = _count
-		end
-		
-		return products_and_count_hash
+	# Get inventory of all products, quantity, and unit 
+	# price associated with a vendor
+	def get_vendor_inventory_products
+		_inventory = self.vendor.inventory
+		return _inventory.inventories_products
 	end
+
+	# Get all products associated to a vendor of a user
+	# def get_vendor_product_names_and_counts
+	# 	product_names = []
+	# 	_sales = self.vendor.sales
+	# 	_sales.each do |sale|
+	# 		_product_name = Product.where(name: sale.product).first.name
+	# 		product_names |= [_product_name]
+	# 	end
+
+	# 	products_and_count_hash = {}
+
+	# 	product_names.each do |_product_name|
+	# 		_count = _sales.where(product: _product_name).count
+	# 		products_and_count_hash[_product_name] = _count
+	# 	end
+		
+	# 	return products_and_count_hash
+	# end
+
 end

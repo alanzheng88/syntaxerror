@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150326081955) do
+ActiveRecord::Schema.define(version: 20150327073417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,11 +37,25 @@ ActiveRecord::Schema.define(version: 20150326081955) do
     t.datetime "updated_at"
   end
 
+  create_table "inventories", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "inventories_products", id: false, force: true do |t|
+    t.integer "inventory_id",                                        null: false
+    t.integer "product_id",                                          null: false
+    t.integer "quantity",                              default: 1
+    t.decimal "unitprice",    precision: 10, scale: 2, default: 0.0
+  end
+
+  add_index "inventories_products", ["inventory_id", "product_id"], name: "index_inventories_products_on_inventory_id_and_product_id", using: :btree
+  add_index "inventories_products", ["product_id", "inventory_id"], name: "index_inventories_products_on_product_id_and_inventory_id", using: :btree
+
   create_table "products", force: true do |t|
     t.string   "name",        limit: 30
     t.integer  "brand_id"
     t.integer  "category_id"
-    t.integer  "quantity",               default: 1
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -65,10 +79,11 @@ ActiveRecord::Schema.define(version: 20150326081955) do
 
   create_table "sales", force: true do |t|
     t.string   "product",    limit: 30
-    t.decimal  "sumtotal",              precision: 10, scale: 2
+    t.decimal  "unitprice",             precision: 10, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "vendor_id"
+    t.integer  "quantity",                                       default: 1
   end
 
   add_index "sales", ["vendor_id"], name: "index_sales_on_vendor_id", using: :btree
@@ -89,11 +104,13 @@ ActiveRecord::Schema.define(version: 20150326081955) do
   add_index "users", ["vendor_id"], name: "index_users_on_vendor_id", using: :btree
 
   create_table "vendors", force: true do |t|
-    t.string   "name",        limit: 30
+    t.string   "name",         limit: 30
     t.integer  "locationkey"
-    t.integer  "productkey"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "inventory_id"
   end
+
+  add_index "vendors", ["inventory_id"], name: "index_vendors_on_inventory_id", using: :btree
 
 end

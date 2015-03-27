@@ -17,14 +17,20 @@
 	<thead>
 		<tr>
 			<th>Products</th>
+			<th>Brand</th>
+			<th>Category</th>
 			<th>Quantity</th>
+			<th>Unit Price</th>
 		</tr>
 	</thead>
 	<tbody>
-		<% @vendor_products_and_counts.each do |vendor_product_name, count| %>
+		<% @vendor_inventory_products.each do |inventory_product| %>
 			<tr>
-				<td><%= vendor_product_name %></td>
-				<td><%= count %></td>
+				<td><%= inventory_product.product.name %></td>
+				<td><%= inventory_product.product.brand.name %></td>
+				<td><%= inventory_product.product.category.name %></td>
+				<td><%= inventory_product.quantity %></td>
+				<td><%= inventory_product.unitprice %></td>
 			</tr>
 		<% end %>
 	</tbody>

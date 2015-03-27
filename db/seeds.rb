@@ -35,11 +35,11 @@ Role.create!(role: 'Vendor Administrator', created_at: Time.now, updated_at: Tim
 Role.create!(role: 'Vendor Manager', created_at: Time.now, updated_at: Time.now)
 Role.create!(role: 'User', created_at: Time.now, updated_at: Time.now)
 
-Vendor.create!(name: 'SmartBuy', locationkey: 1, productkey: 1, created_at: Time.now, updated_at: Time.now)
-Vendor.create!(name: 'KCIX', locationkey: 2, productkey: 2, created_at: Time.now, updated_at: Time.now)
-Vendor.create!(name: 'Present Shop', locationkey: 3, productkey: 3, created_at: Time.now, updated_at: Time.now)
-Vendor.create!(name: 'The Post', locationkey: 4, productkey: 4, created_at: Time.now, updated_at: Time.now)
-Vendor.create!(name: 'ShopComm', locationkey: 5, productkey: 5, created_at: Time.now, updated_at: Time.now)
+Vendor.create!(name: 'SmartBuy', locationkey: 1, inventory_id: 1, created_at: Time.now, updated_at: Time.now)
+Vendor.create!(name: 'KCIX', locationkey: 2, inventory_id: 2, created_at: Time.now, updated_at: Time.now)
+Vendor.create!(name: 'Present Shop', locationkey: 3, inventory_id: 3, created_at: Time.now, updated_at: Time.now)
+Vendor.create!(name: 'The Post', locationkey: 4, inventory_id: 4, created_at: Time.now, updated_at: Time.now)
+Vendor.create!(name: 'ShopComm', locationkey: 5, inventory_id: 5, created_at: Time.now, updated_at: Time.now)
 
 User.create!(username: 'wendylee', firstname: 'Wendy', lastname: '', password: 'Password123', email: 'asdf1@email.com', role_id: 1, vendor_id: 5, created_at: Time.now, updated_at: Time.now)
 User.create!(username: 'linwei69', firstname: 'Lin', lastname: 'Wei', password: 'Password123', email: 'asdf2@email.com', role_id: 2, vendor_id: 1, created_at: Time.now, updated_at: Time.now)
@@ -67,11 +67,15 @@ vendorToProducts = {
 # Assume each vendor has an array of products
 vendorToProducts.each do |vendor, productList|
 	productList.each do |product|
-		randomSumAmount = rand(95) + 5
-		productToAdd = Product.where(name: product).first.name
-		sale = Sale.create(product: productToAdd, sumtotal: randomSumAmount)
-		v = Vendor.where(name: vendor).first
-		v.sales << sale
+		random_price = rand(95) + 5
+		_vendor = Vendor.where(name: vendor).first
+		product_to_add = Product.where(name: product).first
+		# each vendor only has one inventory
+		if _vendor.inventory.nil?
+			_vendor.inventory = Inventory.new
+		end
+		_vendor.inventory.products << product_to_add
+		_vendor.save
 	end
 end
 

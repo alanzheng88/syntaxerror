@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
 	def new
 		@categories = Category.all
 		@vendor_name = @user.vendor.name if @user.vendor.present?
-		@vendor_products_and_counts = @user.get_vendor_product_names_and_counts
+		@vendor_inventory_products = @user.get_vendor_inventory_products
 	end
 
 	def destroy
