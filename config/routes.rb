@@ -17,8 +17,12 @@ Rails.application.routes.draw do
 
   get '/item-info/:id' => 'products#show', as: :product
 
+  delete '/item-info/:id' => 'products#destroy'
+
   get '/product-management' => 'products#new', as: :product_management  
 
+  post '/product-management' => 'products#create'
+ 
   get '/purchase-history' => 'purchase_history#index', as: :purchase_history
 
   get '/users/new' => 'users#new', as: :registration

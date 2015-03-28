@@ -2,10 +2,11 @@
 
 <h1>Product Management</h1>
 <h3>Vendor: <%= @vendor_name or "Unassigned" %> </h3>
-
-<%= form_for(:products, url: product_management_path, action: :new) do |f| %>
+<%= form_for(:product, action: :create) do |f| %>
+	<p><%= flash[:create_product_status] %></p>
 	<p> Product Name <%= f.text_field :name %> </p>
-	<p> Price <%= f.number_field :price, value: 0 %> </p>
+	<p> Unit Price <%= f.number_field :unitprice, value: 0 %> </p>
+	<p> Quantity <%= f.number_field :quantity, value: 1 %> </p>
 	<p> Brand <%= collection_select(:brand, :brand_id, Brand.all, :id, :brand_name) %> </p>
 	<p> Category <%= collection_select(:category, :category_id, @categories, :id, :category_name) %> </p>
 
@@ -20,7 +21,7 @@
 			<th>Brand</th>
 			<th>Category</th>
 			<th>Quantity</th>
-			<th>Unit Price</th>
+			<th>UnitPrice</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -29,8 +30,9 @@
 				<td><%= inventory_product.product.name %></td>
 				<td><%= inventory_product.product.brand.name %></td>
 				<td><%= inventory_product.product.category.name %></td>
-				<td><%= inventory_product.quantity %></td>
-				<td><%= inventory_product.unitprice %></td>
+				<td><%= inventory_product.product.quantity %></td>
+				<td><%= inventory_product.product.unitprice %></td>
+				<td><%= link_to "Delete", inventory_product.product, method: :delete %></td>
 			</tr>
 		<% end %>
 	</tbody>

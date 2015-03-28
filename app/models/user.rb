@@ -19,10 +19,14 @@ class User < ActiveRecord::Base
 		return self.password == login_password
 	end
 
+	def get_vendor_inventory
+		_inventory = self.vendor.inventory
+	end
+
 	# Get inventory of all products, quantity, and unit 
 	# price associated with a vendor
 	def get_vendor_inventory_products
-		_inventory = self.vendor.inventory
+		_inventory = self.get_vendor_inventory
 		if _inventory.present?
 			return _inventory.inventories_products
 		else
