@@ -19,6 +19,11 @@ class ProductsController < ApplicationController
 
 	# Create a new product for a vendor
 	def create
+		if @user.vendor.nil?
+			flash[:create_product_status] = "Cannot create a product until user is assigned a vendor"
+			redirect_to :product_management and return
+		end
+
 		begin
 			_vendor = @user.vendor
 			product = product_params
