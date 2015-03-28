@@ -5,16 +5,21 @@
 <form>
 	<table>
 	  	<tbody>
-	  		<% @products.each do |product| %>
-	  		<tr>
-	  			<td><%= product.name %></td>
-	  			<td><%= link_to "Show", product %></td>
-	  		</tr>
-	  		<% end %>
+	  		<%= form_for(:product) do |f| %>
+		  		<% @products.each do |product| %>
+		  		<tr>
+		  			<td><%= f.check_box product %></td>
+		  			<td><%= product.name %></td>
+		  			<td><%= link_to "Show", product %></td>
+		  		</tr>
+		  		<% end %>
+		  		
+		  		<tr>
+		  			<td><%= f.submit "Order" %></td>
+		  		</tr>
+		  	<% end %>
 	  	</tbody>
 	</table>
-
-	<input type="submit" value="Order">
 </form>
 
 </body>
