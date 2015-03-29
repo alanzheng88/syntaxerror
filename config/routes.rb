@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   
   root 'homepage#index'
 
+  delete '/' => 'homepage#destroy_user_session', as: :destroy_user_session
+
   post '/' => 'homepage#login_attempt'
 
   get '/administrations' => 'administrations#index', as: :administrations

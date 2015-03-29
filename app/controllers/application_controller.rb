@@ -9,4 +9,9 @@ class ApplicationController < ActionController::Base
 	@user ||= User.where(username: session[:username]).first if session[:username].present?
   end
 
+  def destroy_user_session
+  	reset_session
+  	redirect_to root_path
+  end
+
 end

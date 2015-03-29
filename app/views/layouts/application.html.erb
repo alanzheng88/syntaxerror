@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Syntaxerror</title>
+  <title>ShopCommCanada</title>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= link_to "Back to Homepage", root_path %>
 <% if session[:isAuthenticated] %>
+	<p><%= link_to "Back to Homepage", root_path %></p>
+	<p><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></p>
 	<div class="navigation-bar">
 		<ul>
 			<% if session[:role] == "Site Administrator" || session[:role] == "Vendor Administrator" %>
