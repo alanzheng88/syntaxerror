@@ -1,6 +1,4 @@
+# /controllers/purchase_history_controller.rb
+
 class PurchaseHistoryController < ApplicationController
-
-def index
-end
-
 end

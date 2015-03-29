@@ -1,3 +1,5 @@
+# /controllers/products_controller.rb
+
 class ProductsController < ApplicationController
 
 	before_action :get_product, only: [:index, :show, :create, :destroy]
@@ -6,11 +8,20 @@ class ProductsController < ApplicationController
 		@products = Product.all
 	end
 
+	# GET /item-info/:id 		:product
 	def show
 		@product = @products.find(params[:id])
 	end
 
+	# DELETE /item-info/:id
+	def destroy
+		_product = @products.find(params[:id])
+		_product.destroy
+		redirect_to :product_management
+	end
+
 	# Display product management page for managing products
+	# GET /product-management	:product_management
 	def new
 		@categories = Category.all
 		@vendor_name = @user.vendor.name if @user.vendor.present?
@@ -18,6 +29,7 @@ class ProductsController < ApplicationController
 	end
 
 	# Create a new product for a vendor
+	# POST /product-management
 	def create
 		if @user.vendor.nil?
 			flash[:create_product_status] = 
@@ -52,12 +64,6 @@ class ProductsController < ApplicationController
 
 	def product_params
 		params.require(:product).permit(:name, :unitprice, :quantity)
-	end
-
-	def destroy
-		_product = @products.find(params[:id])
-		_product.destroy
-		redirect_to :product_management
 	end
 
 end

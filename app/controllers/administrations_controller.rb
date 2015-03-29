@@ -1,5 +1,8 @@
+# /controllers/administration_controller.rb
+
 class AdministrationsController < ApplicationController
 
+	# GET /administrations		:administrations
 	def index
 		@_role_id = []
 		if session[:role] == 'Site Administrator'

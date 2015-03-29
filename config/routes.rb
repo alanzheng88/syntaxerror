@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   
   root 'homepage#index'
 
@@ -7,37 +6,37 @@ Rails.application.routes.draw do
 
   post '/' => 'homepage#login_attempt'
 
-  get '/administrations' => 'administrations#index', as: :administrations
+  get '/administrations' => 'administrations#index'
 
   get '/thank-you' => 'thank_you#index'
   
   get '/payments' => 'payments#index'
 
   get '/shopping-cart' => 'shopping_cart#index'
-  
-  get '/product-listings' => 'products#index', as: :products
 
-  get '/item-info/:id' => 'products#show', as: :product
+  get '/products' => 'products#index'
 
-  delete '/item-info/:id' => 'products#destroy'
+  get '/products/:id' => 'products#show', as: :product
 
-  get '/product-management' => 'products#new', as: :product_management  
+  delete '/products/:id' => 'products#destroy'
+
+  get '/product-management' => 'products#new'  
 
   post '/product-management' => 'products#create'
  
-  get '/purchase-history' => 'purchase_history#index', as: :purchase_history
+  get '/purchase-history' => 'purchase_history#index'
 
-  get '/users/new' => 'users#new', as: :registration
+  get '/users/registration' => 'users#new'
   
-  post '/users/create' => 'users#create'
+  post '/users/registration' => 'users#create'
  
-  get '/users' => 'users#index', as: :users
+  get '/users' => 'users#index'
 
-  delete '/user/:id' => 'users#destroy', as: :user
+  delete '/users/:id' => 'users#destroy', as: :user
 
-  put '/users' => 'users#assign_role', as: :assign_role
+  put '/user' => 'users#assign_role', as: :user_assign_role
 
-  put '/users/:id' => 'users#unassign_role', as: :unassign_role
+  put '/user/:id' => 'users#unassign_role', as: :user_unassign_role
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,8 +1,10 @@
+<%# /views/products/new.html.erb %>
+
 <body>
 
 <h1>Product Management</h1>
 <h3>Vendor: <%= @vendor_name or "Unassigned" %> </h3>
-<%= form_for(:product, action: :create) do |f| %>
+<%= form_for(:product) do |f| %>
 	<p><%= flash[:create_product_status] %></p>
 	<p> Product Name <%= f.text_field :name %> </p>
 	<p> Unit Price <%= f.number_field :unitprice, value: 0 %> </p>

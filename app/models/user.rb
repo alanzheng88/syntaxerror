@@ -1,3 +1,5 @@
+# /models/user.rb
+
 class User < ActiveRecord::Base
 	belongs_to :role
 	belongs_to :vendor
@@ -22,8 +24,8 @@ class User < ActiveRecord::Base
 	# Get inventory of all products, quantity, and unit 
 	# price associated with a vendor
 	def get_vendor_inventory_products
-		# this user is not a vendor (unassigned)
-		if self.vendor.nil? || self.vendor.inventory.nil?
+		is_unassigned_vendor = self.vendor.nil? || self.vendor.inventory.nil?
+		if is_unassigned_vendor
 			return []
 		else
 			_inventory = self.vendor.inventory

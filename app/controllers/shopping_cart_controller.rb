@@ -1,6 +1,4 @@
+# /controllers/shopping_cart_controller.rb
+
 class ShoppingCartController < ApplicationController
-
-def index
-end
-
 end

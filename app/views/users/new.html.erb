@@ -1,5 +1,8 @@
+<%# /views/users/new.html.erb %>
+
 <body>
 
+<p><%= link_to "Back to Homepage", root_path %></p>
 <h1>Registration</h1>
 
 <% if @user.errors.any? %>
@@ -11,7 +14,7 @@
 <% end %>
 
 <div class="registration_form">
-	<%= form_for(:user, url: {controller: :users, action: :create}) do |f| %>
+	<%= form_for(:user) do |f| %>
 		<p> Username <%= f.text_field :username %> </p>
 		<p> First Name <%= f.text_field :firstname %> </p>
 		<p> Last Name <%= f.text_field :lastname %> </p>

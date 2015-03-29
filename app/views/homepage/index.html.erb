@@ -1,9 +1,11 @@
+<%# /views/homepage/index.html.erb %>
+
 <body>
 
 <div class="header">
 
 	<div class="user-info">
-		<%= form_tag(action: :login_attempt) do %>
+		<%= form_for(:login) do |f| %>
 			<%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
 
 			<% if session[:isAuthenticated] %>
@@ -14,26 +16,20 @@
 			<% else %>
 				<table>
 					<tr>
-						<td><%= text_field_tag(:username, '', placeholder: 'username') %></td>
+						<td><%= f.label :username %></td>
+						<td><%= f.text_field :username %></td>
 					</tr>
 					<tr>
-						<td><%= password_field_tag(:login_password, '', placeholder: 'password') %></td>
+						<td><%= f.label :password %></td>
+						<td><%= f.password_field :password %></td>
 					</tr>
-
-					<%-# Used for testing roles -%>
-					<% if false %>
 					<tr>
-						<td><%= text_field_tag(:role, '', placeholder: 'this is here to test roles') %></td>
-					</tr>
-					<% end %>
-
-					<tr>
-						<td><%= submit_tag("Sign In") %></td>
-						<td><%= link_to "registration", registration_path %>
-						</td>
+						<td></td>
+						<td><%= f.submit "Sign In" %> <%= link_to "registration", users_registration_path %></td>
 					</tr>
 
 					<tr>
+						<td></td>
 						<td><%= flash[:notice] %></td>
 					</tr>
 				</table>

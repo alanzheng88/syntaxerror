@@ -1,3 +1,5 @@
+<%# /views/Administration/index.html.erb %>
+
 <body>
 
 <h1>Administration</h1>
@@ -5,7 +7,7 @@
 <%# http://stackoverflow.com/questions/8907867/can-someone-explain-collection-select-to-me-in-clear-simple-terms %>
 <div id="role-assignment">
   <h3>Assign role to user</h3>
-  <%= form_for(:user, url: assign_role_path, action: :assign_role, method: :put) do |f| %>
+  <%= form_for(:user, url: user_assign_role_path, method: :put) do |f| %>
     <p> Username <%= f.text_field :username, value: '' %> </p>
     <p> <%= flash[:assign_role_status] %> </p>
     <%= collection_select(:role, :role_id, Role.where(id: @_role_id), :id, :name_with_initial, prompt: true) %>
@@ -23,7 +25,7 @@
       <td><%= user.firstname %></td>
       <td><%= user.lastname %></td>
       <td><%= user.role.role %></td>
-      <td><%= link_to "unassign", unassign_role_path(user.id), method: :put %></td>
+      <td><%= link_to "unassign", user_unassign_role_path(user.id), method: :put %></td>
       <td><%= link_to "delete", user, method: :delete, data: {confirm: "This will permanently delete the user from the database. Do you want to continue?"} %></td>
     </tr>
   <% end %>
