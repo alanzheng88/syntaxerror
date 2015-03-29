@@ -8,6 +8,11 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 	end
 
+	def get_role_id(role_name)
+		_role = Role.where(role: role_name).first
+		return _role.id
+	end
+
 	# GET /users/registration 		:registration
 	def new
 		@user = User.new
@@ -32,10 +37,10 @@ class UsersController < ApplicationController
 
 	# GET /users 			:users
 	def index
-		@users = []
-		allUsers = User.all
-		if session[:role] == 'Site Administrator' || session[:role] == 'Vendor Administrator'
-			@users = allUsers.where(role_id: [4])
+		all_users = User.all
+		is_administrator_role = session[:role] == 'Site Administrator' || session[:role] == 'Vendor Administrator'
+		if is_administrator_role
+			@users = all_users.where(role_id: get_role_id('User'))
 		end
 	end
 
@@ -65,7 +70,7 @@ class UsersController < ApplicationController
 	# PUT /user/:id 		:user_unassign_role
 	def unassign_role
 		user = User.find(params[:id])
-		user.role_id = 4
+		user.role_id = get_role_id('User')
 		user.save
 		redirect_to :administrations
 	end

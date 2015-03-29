@@ -15,10 +15,10 @@
 	<p><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></p>
 	<div class="navigation-bar">
 		<ul>
-			<% if session[:role] == "Site Administrator" || session[:role] == "Vendor Administrator" %>
+			<% if @is_administrator_role %>
 				<li><%= link_to "Administration", administrations_path %></li>
 			<% end %>
-			<% if session[:role] != "User" %>
+			<% if @is_not_user_role %>
 				<li><%= link_to "Product Management", product_management_path %></li>
 			<% end %>
 			<li><%= link_to "Products", products_path %></li>
