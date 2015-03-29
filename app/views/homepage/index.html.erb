@@ -6,8 +6,6 @@
 
 	<div class="user-info">
 		<%= form_for(:login) do |f| %>
-			<%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
-
 			<% if session[:isAuthenticated] %>
 				<ul>
 					<li><%= session[:username] %></li>
