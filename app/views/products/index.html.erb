@@ -6,24 +6,22 @@
 
 <p>This page is currently work in progress</p>
 
-<form>
-	<table>
-	  	<tbody>
-	  		<%= form_for(:product) do |f| %>
-		  		<% @products.each do |product| %>
-		  		<tr>
-		  			<td><%= f.check_box product %></td>
-		  			<td><%= product.name %></td>
-		  			<td><%= link_to "Show", product %></td>
-		  		</tr>
-		  		<% end %>
-		  		
-		  		<tr>
-		  			<td><%= f.submit "Order" %></td>
-		  		</tr>
-		  	<% end %>
-	  	</tbody>
-	</table>
-</form>
+<table>
+  	<tbody>
+		<%= form_for(:product) do |f| %>
+			<% @products.each do |product| %>
+	  		<tr>
+	  			<td><%= f.check_box product %></td>
+	  			<td><%= product.name %></td>
+	  			<td><%= link_to "Show", product %></td>
+	  		</tr>
+			<% end %>
+			
+			<tr>
+				<td><%= f.submit "Order" %></td>
+			</tr>
+		<% end %>
+  	</tbody>
+</table>
 
 </body>

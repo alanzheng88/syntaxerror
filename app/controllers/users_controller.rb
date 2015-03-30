@@ -2,11 +2,11 @@
 
 class UsersController < ApplicationController
 	
-	before_action :get_user, only: [:destroy]
-
-	def get_user
-		@user = User.find(params[:id])
-	end
+	before_action :get_user, only: [:destroy, :unassign_role]
+	# Required because application_controller will redirect to
+	# root when user is not authenticated -- should not happen
+	# on registration page
+	skip_before_action :authenticate_user!, only: [:new, :create]
 
 	def get_role_id(role_name)
 		_role = Role.where(role: role_name).first
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(user_params)
 		if @user.save
-			flash[:registration_status] = "You signed up successfully"
+			flash[:homepage_status] = "You signed up successfully"
 			redirect_to root_path
 		else
 			render :new
@@ -35,6 +35,7 @@ class UsersController < ApplicationController
 			:role_id, :created_at, :updated_at)
 	end
 
+	# Displaying list of unassigned users on administration page
 	# GET /users 			:users
 	def index
 		all_users = User.all
@@ -42,12 +43,6 @@ class UsersController < ApplicationController
 		if is_administrator_role
 			@users = all_users.where(role_id: get_role_id('User'))
 		end
-	end
-
-	# DELETE /users/:id 		:user
-	def destroy
-		@user.destroy
-		redirect_to :back	
 	end
 
 	# Update the user for the specified username with the corresponding role
@@ -66,17 +61,26 @@ class UsersController < ApplicationController
  		redirect_to :administrations 
 	end
 
+	def role_params
+		params.require(:role).permit(:role_id)
+	end
+
+	def get_user
+		@user = User.find(params[:id])
+	end
+
+	# DELETE /users/:id 		:user
+	def destroy
+		@user.destroy
+		redirect_to :back	
+	end
+
 	# Unassign by setting user to have the role 'user'
 	# PUT /user/:id 		:user_unassign_role
 	def unassign_role
-		user = User.find(params[:id])
-		user.role_id = get_role_id('User')
-		user.save
+		@user.role_id = get_role_id('User')
+		@user.save
 		redirect_to :administrations
-	end
-
-	def role_params
-		params.require(:role).permit(:role_id)
 	end
 
 end

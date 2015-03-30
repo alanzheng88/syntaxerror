@@ -5,11 +5,11 @@
 <div class="header">
 
 	<div class="user-info">
-		<%= form_for(:login) do |f| %>
-			<% if session[:isAuthenticated] %>
+		<%= form_for(:user) do |f| %>
+			<% if session[:is_authenticated] %>
 				<ul>
-					<li><%= session[:username] %></li>
-					<li><%= session[:role] %></li>
+					<li><%= @current_user.username %></li>
+					<li><%= @current_user.role.role %></li>
 				</ul>
 			<% else %>
 				<table>
@@ -37,7 +37,7 @@
 
 </div>
 
-<h6><%= flash[:registration_status] %></h6>
+<h6><%= flash[:homepage_status] %></h6>
 <h1>Welcome to ShopCommCanada!</h1>
 
 <div class="product-listings">

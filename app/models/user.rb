@@ -17,6 +17,14 @@ class User < ActiveRecord::Base
 		end
 	end
 
+	def admin?
+		return self.role.role == "Site Administrator" || self.role.role == "Vendor Administrator" 
+	end
+
+	def manager?
+		return self.role.role == "Vendor Manager"
+	end
+
 	def match_password(login_password)
 		return self.password == login_password
 	end

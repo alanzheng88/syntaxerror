@@ -2,6 +2,8 @@
 
 class AdministrationsController < ApplicationController
 
+	before_action :ensure_admin!
+
 	# GET /administrations		:administrations
 	def index
 		@_role_id = []
@@ -13,4 +15,10 @@ class AdministrationsController < ApplicationController
 		@user_list = User.where(role_id: @_role_id) || []
 	end
 
+	def ensure_admin!
+		unless @current_user.admin?
+			flash[:homepage_status] = "Unauthorized access to this page"
+			redirect_to root_path
+		end
+	end
 end

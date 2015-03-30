@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   
-  root 'homepage#index'
+  root 'homepage#login'
 
-  delete '/' => 'homepage#destroy_user_session', as: :destroy_user_session
+  delete '/' => 'homepage#sign_out', as: :sign_out
 
   post '/' => 'homepage#login_attempt'
 

@@ -2,10 +2,23 @@
 
 class ProductsController < ApplicationController
 
+	before_action :ensure_product_manager!, except: [:index, :show]
 	before_action :get_product, only: [:index, :show, :create, :destroy]
+
+	def ensure_product_manager!
+		unless @current_user.admin? || @current_user.manager?
+			flash[:homepage_status] = "Unauthorized access to this page"
+			redirect_to root_path
+		end
+	end
 
 	def get_product
 		@products = Product.all
+	end
+
+	# Display list of all products which are currently available for selling
+	# GET /products 		:products
+	def index
 	end
 
 	# GET /item-info/:id 		:product
@@ -24,14 +37,16 @@ class ProductsController < ApplicationController
 	# GET /product-management	:product_management
 	def new
 		@categories = Category.all
-		@vendor_name = @user.vendor.name if @user.vendor.present?
-		@vendor_inventory_products = @user.get_vendor_inventory_products
+		if @current_user.vendor
+			@vendor_name = @current_user.vendor.name
+		end
+		@vendor_inventory_products = @current_user.get_vendor_inventory_products
 	end
 
 	# Create a new product for a vendor
 	# POST /product-management
 	def create
-		if @user.vendor.nil?
+		if @current_user.vendor.nil?
 			flash[:create_product_status] = 
 				"Sorry a product cannot be added until you are assigned a vendor. 
 				Please seek a Site Administrator for further assistance."
@@ -39,7 +54,7 @@ class ProductsController < ApplicationController
 		end
 
 		begin
-			_vendor = @user.vendor
+			_vendor = @current_user.vendor
 			product = product_params
 			brand_id = params.require(:brand).permit(:brand_id)[:brand_id]
 			category_id = params.require(:category).permit(:category_id)[:category_id]

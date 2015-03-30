@@ -10,9 +10,9 @@
 </head>
 <body>
 
-<% if session[:isAuthenticated] %>
+<% if session[:is_authenticated] %>
 	<p><%= link_to "Back to Homepage", root_path %></p>
-	<p><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></p>
+	<p><%= link_to "Sign Out", sign_out_path, method: :delete %></p>
 	<div class="navigation-bar">
 		<ul>
 			<% if @is_administrator_role %>

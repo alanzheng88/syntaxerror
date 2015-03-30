@@ -2,14 +2,19 @@
 
 class HomepageController < ApplicationController
 
+	# GET /
+	def login
+		@current_user = get_current_user
+	end
+
 	# POST /
 	def login_attempt
-		authorized_user = User.authenticate(login_params[:username], login_params[:password])
-		if authorized_user
-			flash[:notice] = "Welcome, you logged in as #{authorized_user.username}"
-			session[:username] = authorized_user.username
-			session[:role] = authorized_user.role.role
-			session[:isAuthenticated] = true
+		authenticated_user = User.authenticate(login_params[:username], login_params[:password])
+		if authenticated_user
+			flash[:notice] = "Welcome, you logged in as #{authenticated_user.username}"
+			session[:user_id] = authenticated_user.id
+			session[:role] = authenticated_user.role.role
+			session[:is_authenticated] = true
 		else
 			flash[:notice] = "Invalid Username or Password"
 		end
@@ -17,6 +22,12 @@ class HomepageController < ApplicationController
 	end
 
 	def login_params
-		params.require(:login).permit(:username, :password)
+		params.require(:user).permit(:username, :password)
+	end
+
+	# DELETE /    :sign_out
+	def sign_out
+		super
+		redirect_to root_path
 	end
 end
