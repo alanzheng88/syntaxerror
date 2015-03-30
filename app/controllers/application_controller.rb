@@ -14,15 +14,6 @@ class ApplicationController < ActionController::Base
     @is_not_user_role = session[:role] != "User"
   end
 
-  def get_current_user
-    if session[:user_id]
-      current_user = User.find(session[:user_id])
-      # Update role whenever homepage refreshes
-      session[:role] = current_user.role.role
-      return current_user
-    end
-  end
-
   def authenticate_user!
     if session[:user_id]
       @current_user = User.find(session[:user_id])
