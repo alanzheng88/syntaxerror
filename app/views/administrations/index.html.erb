@@ -12,11 +12,11 @@
     <p> <%= flash[:assignment_status] %> </p>
     <div>
       <%= f.label :role_dropdown, 'Role' %>
-      <%= collection_select(:role, :role_id, Role.where(id: @_role_id), :id, :role_name, id: :role_dropdown) %>
+      <%= collection_select(:role, :role_id, @roles_to_display, :id, :role_name, id: :role_dropdown) %>
     </div>
     <div>
       <%= f.label :vendor_dropdown, 'Vendor' %>
-      <%= collection_select(:vendor, :vendor_id, Vendor.all, :id, :vendor_name, include_blank: 'None', id: :vendor_dropdown) %>
+      <%= collection_select(:vendor, :vendor_id, @vendors_to_display, :id, :vendor_name, include_blank: 'None', id: :vendor_dropdown) %>
     </div>
     <%= f.submit 'Assign', name: 'assign_button' %>
 

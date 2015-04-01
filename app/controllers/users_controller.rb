@@ -8,11 +8,6 @@ class UsersController < ApplicationController
 	# on registration page
 	skip_before_action :authenticate_user!, only: [:new, :create]
 
-	def get_role_id(role_name)
-		_role = Role.where(role: role_name).first
-		return _role.id
-	end
-
 	# GET /users/registration 		:registration
 	def new
 		@user = User.new
@@ -38,10 +33,11 @@ class UsersController < ApplicationController
 	# Displaying list of unassigned users on administration page
 	# GET /users 			:users
 	def index
-		all_users = User.all
-		is_administrator_role = session[:role] == 'Site Administrator' || session[:role] == 'Vendor Administrator'
+		is_current_role_site_admin = session[:role] == User.site_admin
+		is_current_role_vendor_admin = session[:role] == User.vendor_admin
+		is_administrator_role = is_current_role_site_admin || is_current_role_vendor_admin
 		if is_administrator_role
-			@users = all_users.where(role_id: get_role_id('User'))
+			@users = User.all.where(role_id: Role.get_user_id)
 		end
 	end
 
@@ -86,10 +82,11 @@ class UsersController < ApplicationController
 	# and vendor to null
 	# PUT /user/:id 		:user_unassign_role
 	def unassign_role
-		@user.role_id = get_role_id('User')
+		@user.role_id = Role.get_user_id
 		@user.vendor_id = nil
 		@user.save
 		redirect_to :administrations
 	end
 
+	private :user_params, :role_params, :vendor_params, :get_user
 end

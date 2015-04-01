@@ -10,8 +10,8 @@ class ApplicationController < ActionController::Base
   before_action :authorize_navigation_links, except: [:login_attempt]
 
   def authorize_navigation_links
-    @is_administrator_role = session[:role] == "Site Administrator" || session[:role] == "Vendor Administrator"
-    @is_not_user_role = session[:role] != "User"
+    @is_administrator_role = session[:role] == User.site_admin || session[:role] == User.vendor_admin
+    @is_not_user_role = session[:role] != User.user
   end
 
   def authenticate_user!

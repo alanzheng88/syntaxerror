@@ -6,13 +6,18 @@ class AdministrationsController < ApplicationController
 
 	# GET /administrations		:administrations
 	def index
-		@_role_id = []
+		# Filter display of assigned users based on role.
+		# Site Administrator can only see vendor administrators
+		# and vendor managers.
+		# Vendor Administrators can only see vendor managers.
 		if session[:role] == 'Site Administrator'
-			@_role_id = [2,3]
+			_role_id = [Role.get_vendor_admin_id, Role.get_vendor_manager_id]
 		elsif session[:role] == 'Vendor Administrator'
-			@_role_id = [3]
+			_role_id = [Role.get_vendor_manager_id]
 		end
-		@user_list = User.where(role_id: @_role_id) || []
+		@roles_to_display = Role.where(id: _role_id)
+		@vendors_to_display = Vendor.all
+		@user_list = User.where(role_id: _role_id) || []
 	end
 
 	def ensure_admin!

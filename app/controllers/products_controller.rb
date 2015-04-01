@@ -3,7 +3,7 @@
 class ProductsController < ApplicationController
 
 	before_action :ensure_product_manager!, except: [:index, :show]
-	before_action :get_product, only: [:index, :show, :create, :destroy]
+	before_action :get_product, only: [:index, :destroy]
 
 	def ensure_product_manager!
 		unless @current_user.admin? || @current_user.manager?
@@ -21,12 +21,12 @@ class ProductsController < ApplicationController
 	def index
 	end
 
-	# GET /item-info/:id 		:product
+	# GET /product/:id 		:product
 	def show
 		@product = @products.find(params[:id])
 	end
 
-	# DELETE /item-info/:id
+	# DELETE /product/:id
 	def destroy
 		_product = @products.find(params[:id])
 		_product.destroy
@@ -81,4 +81,5 @@ class ProductsController < ApplicationController
 		params.require(:product).permit(:name, :unitprice, :quantity)
 	end
 
+	private :product_params
 end

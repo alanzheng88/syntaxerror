@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 	validates_confirmation_of :password
 	validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create
 	validates_uniqueness_of :username, :email
-	
+
 	def self.authenticate(username, login_password)
 		user = User.find_by_username(username)
 		if user && user.match_password(login_password)
@@ -39,6 +39,22 @@ class User < ActiveRecord::Base
 			_inventory = self.vendor.inventory
 			return _inventory.inventories_products
 		end
+	end
+
+	def self.site_admin
+		return 'Site Administrator'
+	end
+
+	def self.vendor_admin
+		return 'Vendor Administrator'
+	end
+
+	def self.vendor_manager
+		return 'Vendor Manager'
+	end
+
+	def self.user
+		return 'User'
 	end
 
 	# Get all products associated to a vendor of a user
