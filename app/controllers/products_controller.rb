@@ -3,7 +3,7 @@
 class ProductsController < ApplicationController
 
 	before_action :ensure_product_manager!, except: [:index, :show]
-	before_action :get_product, only: [:index, :destroy]
+	before_action :get_product, only: [:index, :show, :destroy]
 
 	def ensure_product_manager!
 		unless @current_user.admin? || @current_user.manager?
