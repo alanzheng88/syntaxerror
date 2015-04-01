@@ -6,19 +6,27 @@
 
 <%# http://stackoverflow.com/questions/8907867/can-someone-explain-collection-select-to-me-in-clear-simple-terms %>
 <div id="role-assignment">
-  <h3>Assign role to user</h3>
-  <%= form_for(:user, url: user_assign_role_path, method: :put) do |f| %>
+  <h5>**Assign role and vendor to user**</h5>
+  <%= form_for(:user, url: user_assign_state_path, method: :put) do |f| %>
     <p> Username <%= f.text_field :username, value: '' %> </p>
-    <p> <%= flash[:assign_role_status] %> </p>
-    <%= collection_select(:role, :role_id, Role.where(id: @_role_id), :id, :name_with_initial, prompt: true) %>
-    <%= f.submit 'Assign Role' %>
+    <p> <%= flash[:assignment_status] %> </p>
+    <div>
+      <%= f.label :role_dropdown, 'Role' %>
+      <%= collection_select(:role, :role_id, Role.where(id: @_role_id), :id, :role_name, id: :role_dropdown) %>
+    </div>
+    <div>
+      <%= f.label :vendor_dropdown, 'Vendor' %>
+      <%= collection_select(:vendor, :vendor_id, Vendor.all, :id, :vendor_name, include_blank: 'None', id: :vendor_dropdown) %>
+    </div>
+    <%= f.submit 'Assign', name: 'assign_button' %>
+
   <% end %>
   <p><%= link_to "Display list of unassigned users", :users %></p>
 </div>
 
 <h3>Users with assigned roles</h3>
 <%= content_tag(:table) do %>
-  <%= draw_user_role_columns %>
+  <%= draw_user_role_columns('Username', 'Firstname', 'Lastname', 'Role', 'Vendor') %>
   <tbody>
     <% @user_list.each do |user| %>
       <tr>
@@ -26,6 +34,11 @@
         <td><%= user.firstname %></td>
         <td><%= user.lastname %></td>
         <td><%= user.role.role %></td>
+        <% if user.vendor.present? %>
+          <td><%= user.vendor.name %></td>
+        <% else %>
+          <td></td>
+        <% end %>
         <td><%= link_to "unassign", user_unassign_role_path(user.id), method: :put %></td>
         <td><%= link_to "delete", user, method: :delete, data: {confirm: "This will permanently delete the user from the database. Do you want to continue?"} %></td>
       </tr>

@@ -3,7 +3,7 @@
 class Role < ActiveRecord::Base
 	has_many :users
 	
-	def name_with_initial
+	def role_name
 		return role
 	end
 end

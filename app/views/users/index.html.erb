@@ -3,7 +3,7 @@
 <body>
 
 <%= content_tag(:table) do %>
-	<%= draw_user_role_columns %>
+	<%= draw_user_role_columns('Username', 'Firstname', 'Lastname', 'Role')  %>
 	<tbody>
 		<% @users.each do |user| %>
 			<tr>

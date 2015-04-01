@@ -48,21 +48,28 @@ class UsersController < ApplicationController
 	# Update the user for the specified username with the corresponding role
 	# Information is taken from administration index page
 	# PUT /user 			:user_assign_role
-	def assign_role
+	def assign_state
 		_username = user_params[:username]
-		_role_id = role_params[:role_id]
 		user = User.where(username: _username).first
 		if user.present?
+			_role_id = role_params[:role_id]
 			user.role_id = _role_id.presence || user.role_id
+			_vendor_id = vendor_params[:vendor_id]
+			user.vendor_id = _vendor_id
 			user.save
+			flash[:assignment_status] = "The role and vendor was successfully updated!"
 		else
-			flash[:assign_role_status] = "The username provided does not exist!"
+			flash[:assignment_status] = "The username provided does not exist!"
 		end
- 		redirect_to :administrations 
+ 		redirect_to :administrations
 	end
 
 	def role_params
-		params.require(:role).permit(:role_id)
+		return params.require(:role).permit(:role_id)
+	end
+
+	def vendor_params
+		return params.require(:vendor).permit(:vendor_id)
 	end
 
 	def get_user
@@ -76,9 +83,11 @@ class UsersController < ApplicationController
 	end
 
 	# Unassign by setting user to have the role 'user'
+	# and vendor to null
 	# PUT /user/:id 		:user_unassign_role
 	def unassign_role
 		@user.role_id = get_role_id('User')
+		@user.vendor_id = nil
 		@user.save
 		redirect_to :administrations
 	end

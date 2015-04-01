@@ -34,7 +34,7 @@ Rails.application.routes.draw do
 
   delete '/users/:id' => 'users#destroy', as: :user
 
-  put '/user' => 'users#assign_role', as: :user_assign_role
+  put '/user' => 'users#assign_state', as: :user_assign_state
 
   put '/user/:id' => 'users#unassign_role', as: :user_unassign_role
   
