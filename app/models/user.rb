@@ -18,16 +18,16 @@ class User < ActiveRecord::Base
 		end
 	end
 
+	def match_password(login_password)
+		return self.password == login_password
+	end
+
 	def admin?
 		return self.role.name == "Site Administrator" || self.role.name == "Vendor Administrator" 
 	end
 
 	def manager?
 		return self.role.name == "Vendor Manager"
-	end
-
-	def match_password(login_password)
-		return self.password == login_password
 	end
 
 	# Get inventory of all products, quantity, and unit 

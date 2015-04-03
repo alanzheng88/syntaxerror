@@ -1,6 +1,7 @@
 # /models/sale.rb
 
 class Sale < ActiveRecord::Base
-	has_and_belongs_to_many :products
+	has_many :products_sales, dependent: :delete_all
+  has_many :products, through: :products_sales
 	belongs_to :vendor
 end

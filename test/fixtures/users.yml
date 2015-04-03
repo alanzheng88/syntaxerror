@@ -17,21 +17,3 @@ bob:
   email: bobgill@sfu.ca
   role: user
   vendor: the_post
-
-candy:
-  username: bonnie
-  firstname: Bonnie
-  lastname: Zheng
-  password: Password1
-  email:
-  role: vendor_admin
-  vendor: kcix
-
-david:
-  username: bobgill
-  firstname: david
-  lastname: 
-  password: Password1
-  email: david@sfu.ca
-  role: user
-  vendor: smartbuy
