@@ -30,10 +30,10 @@ categories.each do |category|
 end
 
 
-Role.create!(role: 'Site Administrator', created_at: Time.now, updated_at: Time.now)
-Role.create!(role: 'Vendor Administrator', created_at: Time.now, updated_at: Time.now)
-Role.create!(role: 'Vendor Manager', created_at: Time.now, updated_at: Time.now)
-Role.create!(role: 'User', created_at: Time.now, updated_at: Time.now)
+Role.create!(name: 'Site Administrator', created_at: Time.now, updated_at: Time.now)
+Role.create!(name: 'Vendor Administrator', created_at: Time.now, updated_at: Time.now)
+Role.create!(name: 'Vendor Manager', created_at: Time.now, updated_at: Time.now)
+Role.create!(name: 'User', created_at: Time.now, updated_at: Time.now)
 
 Vendor.create!(name: 'SmartBuy', location_id: 1, inventory_id: 1, created_at: Time.now, updated_at: Time.now)
 Vendor.create!(name: 'KCIX', location_id: 2, inventory_id: 2, created_at: Time.now, updated_at: Time.now)

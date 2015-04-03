@@ -32,11 +32,6 @@ ActiveRecord::Schema.define(version: 20150403074904) do
 
   add_index "categories", ["name"], name: "index_categories_on_name", unique: true, using: :btree
 
-  create_table "homepages", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "inventories", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
