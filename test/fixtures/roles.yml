@@ -1,7 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  role: MyString
+site_admin:
+  name: 'Site Administrator'
 
-two:
-  role: MyString
+vendor_admin:
+  name: 'Vendor Administrator'
+
+vendor_manager:
+  name: 'Vendor Manager'
+
+user:
+  name: 'User'

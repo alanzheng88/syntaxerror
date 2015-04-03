@@ -3,15 +3,20 @@
 <body>
 
 <div class="header">
-
 	<div class="user-info">
 		<%= form_for(:user) do |f| %>
+
+
+
 			<% if session[:is_authenticated] %>
+
 				<ul>
 					<li><%= @current_user.username %></li>
-					<li><%= @current_user.role.role %></li>
+					<li><%= @current_user.get_role_name %></li>
 				</ul>
+
 			<% else %>
+
 				<table>
 					<tr>
 						<td><%= f.label :username %></td>
@@ -25,16 +30,18 @@
 						<td></td>
 						<td><%= f.submit "Sign In" %> <%= link_to "registration", users_registration_path %></td>
 					</tr>
-
 					<tr>
 						<td></td>
 						<td><%= flash[:notice] %></td>
 					</tr>
 				</table>
+
 			<% end %>
+
+
+
 		<% end %>
 	</div>
-
 </div>
 
 <h6><%= flash[:homepage_status] %></h6>

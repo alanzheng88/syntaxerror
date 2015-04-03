@@ -1,19 +1,37 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  username: MyString
-  firstname: MyString
-  lastname: MyString
-  password: MyString
-  email: MyString
-  rolekey: 1
-  userlistkey: 1
+alan:
+  username: alanz
+  firstname: Alan
+  lastname: Zheng
+  password: Password1
+  email: alanz@sfu.ca
+  role: site_admin
+  vendor: shopcomm
 
-two:
-  username: MyString
-  firstname: MyString
-  lastname: MyString
-  password: MyString
-  email: MyString
-  rolekey: 1
-  userlistkey: 1
+bob:
+  username: bobgill
+  firstname: bob
+  lastname: gill
+  password: Password2
+  email: bobgill@sfu.ca
+  role: user
+  vendor: the_post
+
+candy:
+  username: bonnie
+  firstname: Bonnie
+  lastname: Zheng
+  password: Password1
+  email:
+  role: vendor_admin
+  vendor: kcix
+
+david:
+  username: bobgill
+  firstname: david
+  lastname: 
+  password: Password1
+  email: david@sfu.ca
+  role: user
+  vendor: smartbuy

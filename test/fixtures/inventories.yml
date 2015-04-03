@@ -1,11 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  product_id: 1
-  quantity: 1
-  unitprice: 1
-
-two:
-  product_id: 1
-  quantity: 1
-  unitprice: 1
+inventory_one:
+  created_at: '2015-03-28 01:48:38.144334'
+  updated_at: '2015-03-28 01:48:38.144334'
+inventory_two:
+  created_at: '2015-03-28 01:48:38.144334'
+  updated_at: '2015-03-28 01:48:38.144334'

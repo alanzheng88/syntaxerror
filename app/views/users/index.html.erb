@@ -10,7 +10,7 @@
 				<td><%= user.username %></td>
 				<td><%= user.firstname %></td>
 				<td><%= user.lastname %></td>		
-				<td><%= user.role.role %></td>
+				<td><%= user.get_role_name %></td>
 				<td><%= link_to "Delete", user, method: :delete, data: {confirm: "This will permanently delete the user from the database. Do you want to continue?"} %></td>
 			</tr>
 		<% end %>

@@ -1,7 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+xiaowei:
+  name: Xiaowei Inc
 
-two:
-  name: MyString
+smartcell:
+  name: Smartcell Tech
+
+krusche:
+  name: Krusche Crop

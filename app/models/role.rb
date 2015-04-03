@@ -10,7 +10,7 @@ class Role < ActiveRecord::Base
 	# 		Vendor Manager
 	# 		User
 	def self.get_role_id(role_name)
-		_role = Role.where(role: role_name).first
+		_role = Role.where(name: role_name).first
 		return _role.id
 	end
 
@@ -31,7 +31,7 @@ class Role < ActiveRecord::Base
 	end
 
 	def role_name
-		return role
+		return name
 	end
 
 	private_class_method :get_role_id

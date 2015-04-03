@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
     if session[:user_id]
       @current_user = User.find(session[:user_id])
       # update role everytime a page is visited
-      session[:role] = @current_user.role.role
+      session[:role] = @current_user.get_role_name
       return
     end
     sign_out

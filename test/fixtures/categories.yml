@@ -1,7 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+wearable_tech:
+  name: Wearable Tech
 
-two:
-  name: MyString
+computer_and_laptops:
+  name: 'Computer & laptops'
+
+mobile_devices:
+  name: Mobile Devices
+
+misc:
+  name: misc

@@ -35,11 +35,11 @@ Role.create!(role: 'Vendor Administrator', created_at: Time.now, updated_at: Tim
 Role.create!(role: 'Vendor Manager', created_at: Time.now, updated_at: Time.now)
 Role.create!(role: 'User', created_at: Time.now, updated_at: Time.now)
 
-Vendor.create!(name: 'SmartBuy', locationkey: 1, inventory_id: 1, created_at: Time.now, updated_at: Time.now)
-Vendor.create!(name: 'KCIX', locationkey: 2, inventory_id: 2, created_at: Time.now, updated_at: Time.now)
-Vendor.create!(name: 'Present Shop', locationkey: 3, inventory_id: 3, created_at: Time.now, updated_at: Time.now)
-Vendor.create!(name: 'The Post', locationkey: 4, inventory_id: 4, created_at: Time.now, updated_at: Time.now)
-Vendor.create!(name: 'ShopComm', locationkey: 5, inventory_id: 5, created_at: Time.now, updated_at: Time.now)
+Vendor.create!(name: 'SmartBuy', location_id: 1, inventory_id: 1, created_at: Time.now, updated_at: Time.now)
+Vendor.create!(name: 'KCIX', location_id: 2, inventory_id: 2, created_at: Time.now, updated_at: Time.now)
+Vendor.create!(name: 'Present Shop', location_id: 3, inventory_id: 3, created_at: Time.now, updated_at: Time.now)
+Vendor.create!(name: 'The Post', location_id: 4, inventory_id: 4, created_at: Time.now, updated_at: Time.now)
+Vendor.create!(name: 'ShopComm', location_id: 5, inventory_id: 5, created_at: Time.now, updated_at: Time.now)
 
 User.create!(username: 'wendylee', firstname: 'Wendy', lastname: '', password: 'Password123', email: 'asdf1@email.com', role_id: 1, vendor_id: 5, created_at: Time.now, updated_at: Time.now)
 User.create!(username: 'linwei69', firstname: 'Lin', lastname: 'Wei', password: 'Password123', email: 'asdf2@email.com', role_id: 2, vendor_id: 1, created_at: Time.now, updated_at: Time.now)

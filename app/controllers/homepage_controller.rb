@@ -20,7 +20,7 @@ class HomepageController < ApplicationController
 		if authenticated_user
 			flash[:notice] = "Welcome, you logged in as #{authenticated_user.username}"
 			session[:user_id] = authenticated_user.id
-			session[:role] = authenticated_user.role.role
+			session[:role] = authenticated_user.get_role_name
 			session[:is_authenticated] = true
 		else
 			flash[:notice] = "Invalid Username or Password"

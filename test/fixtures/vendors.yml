@@ -1,11 +1,26 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  vendor: MyString
-  locationkey: 1
-  productkey: 1
+smartbuy:
+  name: 'SmartBuy'
+  location_id: 1
+  inventory_id: 1
 
-two:
-  vendor: MyString
-  locationkey: 1
-  productkey: 1
+kcix:
+  name: 'KCIX'
+  location_id: 2
+  inventory_id: 2
+
+present_shop:
+  name: 'Present Shop'
+  location_id: 3
+  inventory_id: 3
+
+the_post:
+  name: 'The Post'
+  location_id: 4
+  inventory_id: 4
+
+shopcomm:
+  name: 'ShopComm'
+  location_id: 5
+  inventory_id: 5

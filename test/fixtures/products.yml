@@ -1,15 +1,69 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  price: 9.99
-  brand_id: 
-  category_id: 
+quickwatch:
+  name: 'QuickWatch'
+  unitprice: 9.99
+  brand: xiaowei
+  category: misc
+  quantity: 2
+
+precision_book_x_series:
+  name: 'Precision-Book X Series'
+  unitprice: 10.99
+  brand: smartcell
+  category: misc
   quantity: 1
 
-two:
-  name: MyString
-  price: 9.99
-  brand_id: 
-  category_id: 
-  quantity: 1
+precisioncell_p_series:
+  name: 'PrecisionCell P series'
+  unitprice: 5.09
+  brand: xiaowei
+  category: computer_and_laptops
+
+smartgear:
+  name: 'Smartgear'
+  unitprice: 6.00
+  brand: krusche
+  category: computer_and_laptops
+
+smartbook:
+  name: 'Smartbook'
+  unitprice: 3.55
+  brand: smartcell
+  category: wearable_tech
+
+smartcell:
+  name: 'Smartcell'
+  unitprice: 6.32
+  brand: xiaowei
+  category: misc
+
+smartbook_laptop_protector:
+  name: 'Smartbook laptop protector'
+  unitprice: 92.23
+  brand: krusche
+  category: wearable_tech
+
+krusche_time:
+  name: 'Krusche Time (T-series)'
+  unitprice: 32.23
+  brand: krusche
+  category: misc
+
+krusche_mint_ii:
+  name: 'Krusche Mint II'
+  unitprice: 94.23
+  brand: xiaowei
+  category: wearable_tech
+
+krusche_quick_s3:
+  name: 'Krusche Quick S3'
+  unitprice: 20.22
+  brand: smartcell
+  category: misc
+
+krusche_usb_charger:
+  name: 'Krusche USB Charger'
+  unitprice: 04.23
+  brand: smartcell
+  category: wearable_tech 

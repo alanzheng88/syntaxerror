@@ -70,6 +70,12 @@ class UsersController < ApplicationController
 
 	def get_user
 		@user = User.find(params[:id])
+		return @user
+	end
+
+	def get_role_name
+		role_name = self.role.name
+		return role_name
 	end
 
 	# DELETE /users/:id 		:user

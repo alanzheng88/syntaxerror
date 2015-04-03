@@ -3,9 +3,10 @@
 class User < ActiveRecord::Base
 	belongs_to :role
 	belongs_to :vendor
-	validates_presence_of :username, :firstname, :password, :email
+	validates_presence_of :username, :firstname, :password, :email, :role
 	validates_confirmation_of :password
-	validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create
+	validates_length_of :password, minimum: 8, maximum: 16
+	validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
 	validates_uniqueness_of :username, :email
 
 	def self.authenticate(username, login_password)
@@ -18,11 +19,11 @@ class User < ActiveRecord::Base
 	end
 
 	def admin?
-		return self.role.role == "Site Administrator" || self.role.role == "Vendor Administrator" 
+		return self.role.name == "Site Administrator" || self.role.name == "Vendor Administrator" 
 	end
 
 	def manager?
-		return self.role.role == "Vendor Manager"
+		return self.role.name == "Vendor Manager"
 	end
 
 	def match_password(login_password)
@@ -55,6 +56,10 @@ class User < ActiveRecord::Base
 
 	def self.user
 		return 'User'
+	end
+
+	def get_role_name
+		return self.role.name
 	end
 
 	# Get all products associated to a vendor of a user
