@@ -7,7 +7,7 @@ alan:
   password: Password1
   email: alanz@sfu.ca
   role: site_admin
-  vendor: shopcomm
+  vendor: smartbuy
 
 bob:
   username: bobgill

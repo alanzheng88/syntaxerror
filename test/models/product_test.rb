@@ -6,9 +6,6 @@ class ProductTest < ActiveSupport::TestCase
     @product1 = products(:quickwatch)
   end
 
-  def teardown
-  end
-
   # test name
   test "should not be able to create product with unassigned value for product name" do
     @product1.name = nil

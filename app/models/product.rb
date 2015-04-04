@@ -9,4 +9,5 @@ class Product < ActiveRecord::Base
   has_many :inventories, through: :inventories_products
 
   validates_presence_of :name, :brand_id, :category_id
+  
 end

@@ -7,9 +7,6 @@ class UserTest < ActiveSupport::TestCase
     @user2 = users(:bob)
   end
 
-  def teardown
-  end
-
   # test username
   test "should not be able to create user without username" do
     @user1.username = nil

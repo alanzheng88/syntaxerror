@@ -5,3 +5,6 @@ iphone:
 
 earphones:
   unitprice: 12.99
+
+laptop:
+  unitprice: 1299.99
