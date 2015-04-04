@@ -46,8 +46,9 @@ class ProductTest < ActiveSupport::TestCase
   end
 
   test "should be able to have no sales for product" do
-    @product1.sales = nil
-    assert_equal @product1.save, "Expected null value for product sales"
+    @product1.sales.delete_all
+    _count = @product1.sales.count
+    assert_equal 0, _count, "Expected a zero count for product sales"
   end
   
 end
