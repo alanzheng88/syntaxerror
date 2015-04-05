@@ -29,12 +29,12 @@
 	<tbody>
 		<% @vendor_inventory_products.each do |inventory_product| %>
 			<tr>
-				<td><%= inventory_product.product.name %></td>
-				<td><%= inventory_product.product.brand.name %></td>
-				<td><%= inventory_product.product.category.name %></td>
-				<td><%= inventory_product.product.quantity %></td>
-				<td><%= inventory_product.product.unitprice %></td>
-				<td><%= link_to "Delete", inventory_product.product, method: :delete %></td>
+				<td><%= inventory_product.name %></td>
+				<td><%= inventory_product.brand.name %></td>
+				<td><%= inventory_product.category.name %></td>
+				<td><%= inventory_product.quantity %></td>
+				<td><%= inventory_product.unitprice %></td>
+				<td><%= link_to "Delete", inventory_product, method: :delete %></td>
 			</tr>
 		<% end %>
 	</tbody>

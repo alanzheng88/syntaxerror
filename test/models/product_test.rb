@@ -38,7 +38,9 @@ class ProductTest < ActiveSupport::TestCase
 
   # test sales
   test "should be able to create many sales for product" do
-    @product1.sales << Sale.new << Sale.new << Sale.new
+    3.times do
+      @product1.sales << Sale.new(vendor_id: 1)
+    end
     assert_equal 3, @product1.sales.length, "Expected multiple sales entries for product"
   end
 

@@ -70,12 +70,6 @@ class UserTest < ActiveSupport::TestCase
     assert @user1.save, "Expected password to be set"
   end
 
-  # test role
-  test "should not be able to create or update user with no role" do
-    @user1.role = nil
-    assert_not @user1.save, "Expected role to be set."
-  end
-
   # test vendor
   test "should be able to create or update user with no vendor" do
     @user1.vendor = nil
@@ -99,43 +93,63 @@ class UserTest < ActiveSupport::TestCase
     assert_equal false, @user2, "Expected false since username and/or password does not match any entry in database."
   end
 
-  # test match_password
-  test "match_password" do
+  # test match password
+  test "match password" do
     @user1.password = "test_password"
     assert_equal true, @user1.match_password("test_password")
   end
 
   # test admin?
-  test "admin_return_value_for_site_admininistrator" do
+  test "admin return value for site admininistrator" do
     @user1.role.name = User.site_admin
     assert_equal true, @user1.admin?, "Expected role to be Site Administrator."
   end
 
-  test "admin_return_value_for_vendor_administrator" do
+  test "admin return value for vendor administrator" do
     @user1.role.name = User.vendor_admin
     assert_equal true, @user1.admin?, "Expected role to be Vendor Administrator."
   end
 
   # test manager?
-  test "manager_return_value_for_vendor_manager" do
+  test "manager return value for vendor manager" do
     @user1.role.name = User.vendor_manager
     assert_equal true, @user1.manager?, "Expected role to be Vendor Manager."
   end
 
-  # test get_rolename
-  test "user_get_role_name_for_site_admin" do
+  # test inventory products
+  test "get inventory products with existing vendor" do
+    expected_products = @user1.vendor.inventory.products
+    actual_products = @user1.get_vendor_inventory_products
+    assert_equal expected_products, actual_products
+  end
+
+  test "get inventory products with no vendor" do
+    @user1.vendor = nil
+    expected_products = []
+    actual_products = @user1.get_vendor_inventory_products
+    assert_equal expected_products, actual_products, "Expected no products since vendor is not assigned to user"
+  end
+
+  # test role
+  test "should not be able to create or update user with no role" do
+    @user1.role = nil
+    assert_not @user1.save, "Expected role to be set."
+  end
+
+  # test rolename
+  test "user get role name for siteadmin" do
     @user1.role.name = User.site_admin
     assert_equal "Site Administrator", @user1.get_role_name
   end
-  test "user_get_role_name_for_vendor_admin" do
+  test "user get role name for vendor admin" do
     @user1.role.name = User.vendor_admin
     assert_equal "Vendor Administrator", @user1.get_role_name
   end
-  test "user_get_role_name_for_vendor_manager" do
+  test "user get role name for vendor manager" do
     @user1.role.name = User.vendor_manager
     assert_equal "Vendor Manager", @user1.get_role_name
   end
-  test "user_get_role_name_for_user" do
+  test "user get role name for user" do
     @user1.role.name = User.user
     assert_equal "User", @user1.get_role_name
   end

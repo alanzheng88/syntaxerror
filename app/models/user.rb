@@ -33,12 +33,12 @@ class User < ActiveRecord::Base
 	# Get inventory of all products, quantity, and unit 
 	# price associated with a vendor
 	def get_vendor_inventory_products
-		is_unassigned_vendor = self.vendor.nil? || self.vendor.inventory.nil?
+		is_unassigned_vendor = self.vendor.nil?
 		if is_unassigned_vendor
 			return []
 		else
 			_inventory = self.vendor.inventory
-			return _inventory.inventories_products
+			return _inventory.products
 		end
 	end
 

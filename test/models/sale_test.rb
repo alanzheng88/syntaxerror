@@ -31,4 +31,10 @@ class SaleTest < ActiveSupport::TestCase
     product_count = Product.where(id: _product_ids).count
     assert_equal 2, product_count, "Expected products not to be deleted when sale is deleted"
   end
+
+  # test vendor
+  test "should not create sale without having association to vendor" do
+    _sale = Sale.new
+    assert_not _sale.save, "Expected vendor_id to be assigned to sale."
+  end
 end
