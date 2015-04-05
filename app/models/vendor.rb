@@ -8,7 +8,7 @@ class Vendor < ActiveRecord::Base
   before_destroy :delete_inventory
   
   def create_inventory
-    self.attributes = {inventory: Inventory.new}
+    self.attributes ||= {inventory: Inventory.create}
   end
 
 	def vendor_name

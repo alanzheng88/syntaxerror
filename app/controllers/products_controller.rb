@@ -64,7 +64,6 @@ class ProductsController < ApplicationController
 									category: Category.find(category_id),
 									quantity: product[:quantity],
 									unitprice: product[:unitprice])
-			_vendor.inventory ||= Inventory.create
 			_vendor.inventory.products << product_to_create
 
 			if _vendor.save
