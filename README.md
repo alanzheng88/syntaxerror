@@ -1,5 +1,8 @@
 # SyntaxError
 
+![homepage demo](https://github.com/alanzheng88/syntaxerror/blob/master/images/homepage.png)
+![administration demo](https://github.com/alanzheng88/syntaxerror/blob/master/images/administration.png)
+
 ## Setup
 
 1. Install dependencies
@@ -9,7 +12,7 @@ bundle install
 2. Install Postgres, and create the database & user for login:
 ```
 psql
-CREATE CREATE USER syntaxerror WITH PASSWORD 'Password1';
+CREATE CREATE USER syntaxerror WITH SUPERUSER PASSWORD 'Password1';
 CREATE DATABASE syntaxerror_development;
 ```
 3. Create users, roles and tables and seed data
